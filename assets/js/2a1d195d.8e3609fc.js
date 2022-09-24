@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdaikon=self.webpackChunkdaikon||[]).push([[6329],{3457:a=>{a.exports=JSON.parse('{"label":"facebook","permalink":"/daikon/blog/tags/facebook","allTagsPath":"/daikon/blog/tags","count":1}')}}]);

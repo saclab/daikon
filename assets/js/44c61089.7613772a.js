@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdaikon=self.webpackChunkdaikon||[]).push([[5010],{1972:o=>{o.exports=JSON.parse('{"permalink":"/daikon/blog/tags/docusaurus","page":1,"postsPerPage":10,"totalPages":1,"totalCount":4,"blogDescription":"Blog","blogTitle":"Blog"}')}}]);

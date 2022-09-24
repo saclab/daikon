@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdaikon=self.webpackChunkdaikon||[]).push([[5245],{3458:o=>{o.exports=JSON.parse('{"permalink":"/daikon/blog/tags/hola","page":1,"postsPerPage":10,"totalPages":1,"totalCount":1,"blogDescription":"Blog","blogTitle":"Blog"}')}}]);
