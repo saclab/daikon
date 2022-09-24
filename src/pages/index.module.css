@@ -3,6 +3,14 @@
  * and scoped locally.
  */
 
+ .backgroundLogin {
+  /* background: linear-gradient(120deg, #000, #fff 100%); */
+  background-image: url('/img/Ocean-2.4s-3000px.svg');
+  width: 100%;
+  min-height: 100vh;
+  background-size: cover;
+}
+
 .heroBanner {
   padding: 4rem 0;
   text-align: center;

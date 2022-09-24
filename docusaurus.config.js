@@ -6,8 +6,8 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Daikon',
-  tagline: 'A Data acquisition, integration, and knowledge capture web application for target-based drug discovery',
+  title: 'D A I K O N',
+  tagline: 'Data Acquisition, Integration, and Knowledge capture applicatiON for target-based drug discovery',
   url: 'https://your-docusaurus-test-site.com',
   baseUrl: '/daikon/',
   onBrokenLinks: 'throw',
@@ -58,9 +58,9 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: 'My Site',
+        title: 'DAIKON',
         logo: {
-          alt: 'My Site Logo',
+          alt: 'Daikon Logo',
           src: 'img/logo.svg',
         },
         items: [
@@ -121,7 +121,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} DAIKON, Inc. Built with Docusaurus.`,
       },
       prism: {
         theme: lightCodeTheme,

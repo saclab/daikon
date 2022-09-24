@@ -5,14 +5,23 @@
  */
 
 /* You can override the default Infima variables here. */
+.root {
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+body {
+  margin: 0;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 300;
+}
+
 :root {
-  --ifm-color-primary: #2e8555;
-  --ifm-color-primary-dark: #29784c;
-  --ifm-color-primary-darker: #277148;
-  --ifm-color-primary-darkest: #205d3b;
-  --ifm-color-primary-light: #33925d;
-  --ifm-color-primary-lighter: #359962;
-  --ifm-color-primary-lightest: #3cad6e;
+  --ifm-color-primary: #332288;
+  --ifm-color-primary-dark: #1c80cf;
+  --ifm-color-primary-darker: #1769aa;
+  --ifm-color-primary-darkest: #0d3c61;
+  --ifm-color-primary-light: #4baaf5;
+  --ifm-color-primary-lighter: #75bef8;
+  --ifm-color-primary-lightest: #a0d2fa;
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
 }
