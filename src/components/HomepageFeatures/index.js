@@ -4,7 +4,7 @@ import styles from "./styles.module.css";
 
 const FeatureList = [
   {
-    title: "See where DAIKON fits",
+    title: "Glue Molecular DBs & PMTs.",
     Svg: require("@site/static/img/undraw_docusaurus_mountain.svg").default,
     description: (
       <>
@@ -13,16 +13,16 @@ const FeatureList = [
     ),
   },
   {
-    title: "Integration & Data sources",
+    title: "Retain knowledge as compounds evolve.",
     Svg: require("@site/static/img/undraw_docusaurus_tree.svg").default,
     description: <>Learn about the databases & APIs used in DAIKON.</>,
   },
   {
-    title: "Future plans",
+    title: "Actively developed.*",
     Svg: require("@site/static/img/undraw_docusaurus_react.svg").default,
     description: (
       <>
-        Know more about the active development to incorporate more discovery
+        Know more about the ongoing developments and future plans to incorporate more discovery
         pipelines.
       </>
     ),
@@ -55,9 +55,9 @@ export default function HomepageFeatures() {
   return (
     <section className={styles.features}>
       <div className={"container"}>
-        <div 
+        <div
         // className={styles.boxEnclose}
-        
+
         >
           <div className="row">
             {FeatureList.map((props, idx) => (

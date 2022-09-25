@@ -16,13 +16,12 @@ function HomepageHeader() {
         <div className="container">
           <h1 className="hero__title">{siteConfig.title}</h1>
           <p className="hero__subtitle">
-            <b>Open source</b> framework to <i>integrate</i> the many
-            aspects of <b>target-based</b> drug discovery.
+            <b>Open source</b> foundation framework <i>integrating</i> <b>target-based</b> drug discovery workflows.
           </p>
 
           <p>
             Deploy on-premise or on cloud and bring in your Organization's users
-            quickly with Active Directory Connect{" "}
+            quickly with Active Directory Connect.
           </p>
           <div className={styles.buttons}>
             <Link
