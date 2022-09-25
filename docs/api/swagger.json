@@ -1,0 +1,5217 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "My API",
+    "version": "v1"
+  },
+  "paths": {
+    "/api/Account": {
+      "get": {
+        "tags": [
+          "Account"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/elevated/Accounts/roles": {
+      "get": {
+        "tags": [
+          "Accounts"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AppRole"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AppRole"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AppRole"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Accounts"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AppRole"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AppRole"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AppRole"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/elevated/Accounts/orgs": {
+      "get": {
+        "tags": [
+          "Accounts"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AppOrg"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AppOrg"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AppOrg"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Accounts"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AppOrg"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AppOrg"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AppOrg"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/elevated/Accounts/orgs/{id}": {
+      "post": {
+        "tags": [
+          "Accounts"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AppOrg"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AppOrg"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AppOrg"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/elevated/Accounts": {
+      "get": {
+        "tags": [
+          "Accounts"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Accounts"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/elevated/Accounts/{email}": {
+      "get": {
+        "tags": [
+          "Accounts"
+        ],
+        "parameters": [
+          {
+            "name": "email",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/RegisterDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RegisterDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RegisterDto"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Accounts"
+        ],
+        "parameters": [
+          {
+            "name": "email",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Buggy/not-found": {
+      "get": {
+        "tags": [
+          "Buggy"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Buggy/bad-request": {
+      "get": {
+        "tags": [
+          "Buggy"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Buggy/server-error": {
+      "get": {
+        "tags": [
+          "Buggy"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Buggy/unauthorised": {
+      "get": {
+        "tags": [
+          "Buggy"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Discussion/{reference}": {
+      "get": {
+        "tags": [
+          "Discussion"
+        ],
+        "parameters": [
+          {
+            "name": "reference",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Discussion": {
+      "post": {
+        "tags": [
+          "Discussion"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Discussion"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Discussion"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Discussion"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Discussion/{id}": {
+      "post": {
+        "tags": [
+          "Discussion"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Discussion"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Discussion"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Discussion"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Discussion"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Discussion/{discussionId}/reply": {
+      "post": {
+        "tags": [
+          "Discussion"
+        ],
+        "parameters": [
+          {
+            "name": "discussionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Reply"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Reply"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Reply"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Discussion/{discussionId}/reply/{id}": {
+      "post": {
+        "tags": [
+          "Discussion"
+        ],
+        "parameters": [
+          {
+            "name": "discussionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Reply"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Reply"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Reply"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Discussion"
+        ],
+        "parameters": [
+          {
+            "name": "discussionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Gene": {
+      "get": {
+        "tags": [
+          "Gene"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Gene"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Gene"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Gene"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Gene"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Gene/{id}": {
+      "get": {
+        "tags": [
+          "Gene"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Gene"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GenePublicEditDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GenePublicEditDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GenePublicEditDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Gene"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Gene/by-accession/{accessionNo}": {
+      "get": {
+        "tags": [
+          "Gene"
+        ],
+        "parameters": [
+          {
+            "name": "accessionNo",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Gene/{id}/history": {
+      "get": {
+        "tags": [
+          "Gene"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Gene/promotionrequest/{targetName}": {
+      "post": {
+        "tags": [
+          "Gene"
+        ],
+        "parameters": [
+          {
+            "name": "targetName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GenePromotionRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GenePromotionRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GenePromotionRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Gene/{id}/promotionrequest": {
+      "get": {
+        "tags": [
+          "Gene"
+        ],
+        "parameters": [
+          {
+            "name": "targetName",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Gene/{targetName}/validateNewTargetName": {
+      "get": {
+        "tags": [
+          "Gene"
+        ],
+        "parameters": [
+          {
+            "name": "targetName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Gene/{geneId}/essentiality": {
+      "post": {
+        "tags": [
+          "Gene"
+        ],
+        "parameters": [
+          {
+            "name": "geneId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeneEssentiality"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeneEssentiality"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeneEssentiality"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Gene/{geneId}/essentiality/{id}": {
+      "post": {
+        "tags": [
+          "Gene"
+        ],
+        "parameters": [
+          {
+            "name": "geneId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeneEssentiality"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeneEssentiality"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeneEssentiality"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Gene/{geneId}/proteinproduction": {
+      "post": {
+        "tags": [
+          "Gene"
+        ],
+        "parameters": [
+          {
+            "name": "geneId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeneProteinProduction"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeneProteinProduction"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeneProteinProduction"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Gene/{geneId}/proteinproduction/{id}": {
+      "post": {
+        "tags": [
+          "Gene"
+        ],
+        "parameters": [
+          {
+            "name": "geneId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeneProteinProduction"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeneProteinProduction"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeneProteinProduction"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Gene/{geneId}/proteinactivityassay": {
+      "post": {
+        "tags": [
+          "Gene"
+        ],
+        "parameters": [
+          {
+            "name": "geneId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeneProteinActivityAssay"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeneProteinActivityAssay"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeneProteinActivityAssay"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Gene/{geneId}/proteinactivityassay/{id}": {
+      "post": {
+        "tags": [
+          "Gene"
+        ],
+        "parameters": [
+          {
+            "name": "geneId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeneProteinActivityAssay"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeneProteinActivityAssay"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeneProteinActivityAssay"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Gene/{geneId}/crispristrain": {
+      "post": {
+        "tags": [
+          "Gene"
+        ],
+        "parameters": [
+          {
+            "name": "geneId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeneCRISPRiStrain"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeneCRISPRiStrain"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeneCRISPRiStrain"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Gene/{geneId}/crispristrain/{id}": {
+      "post": {
+        "tags": [
+          "Gene"
+        ],
+        "parameters": [
+          {
+            "name": "geneId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeneCRISPRiStrain"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeneCRISPRiStrain"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeneCRISPRiStrain"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Gene/{geneId}/resistancemutation": {
+      "post": {
+        "tags": [
+          "Gene"
+        ],
+        "parameters": [
+          {
+            "name": "geneId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeneResistanceMutation"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeneResistanceMutation"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeneResistanceMutation"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Gene/{geneId}/resistancemutation/{id}": {
+      "post": {
+        "tags": [
+          "Gene"
+        ],
+        "parameters": [
+          {
+            "name": "geneId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeneResistanceMutation"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeneResistanceMutation"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeneResistanceMutation"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Gene/{geneId}/unpublishedstructures": {
+      "post": {
+        "tags": [
+          "Gene"
+        ],
+        "parameters": [
+          {
+            "name": "geneId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeneUnpublishedStructures"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeneUnpublishedStructures"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeneUnpublishedStructures"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Gene/{geneId}/unpublishedstructures/{id}": {
+      "post": {
+        "tags": [
+          "Gene"
+        ],
+        "parameters": [
+          {
+            "name": "geneId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeneUnpublishedStructures"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeneUnpublishedStructures"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeneUnpublishedStructures"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Gene/{geneId}/vulnerability": {
+      "post": {
+        "tags": [
+          "Gene"
+        ],
+        "parameters": [
+          {
+            "name": "geneId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeneVulnerability"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeneVulnerability"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeneVulnerability"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Gene/{geneId}/vulnerability/{id}": {
+      "post": {
+        "tags": [
+          "Gene"
+        ],
+        "parameters": [
+          {
+            "name": "geneId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeneVulnerability"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeneVulnerability"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeneVulnerability"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Gene/{geneId}/hypomorph": {
+      "post": {
+        "tags": [
+          "Gene"
+        ],
+        "parameters": [
+          {
+            "name": "geneId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeneHypomorph"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeneHypomorph"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeneHypomorph"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Gene/{geneId}/hypomorph/{id}": {
+      "post": {
+        "tags": [
+          "Gene"
+        ],
+        "parameters": [
+          {
+            "name": "geneId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeneHypomorph"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeneHypomorph"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeneHypomorph"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/elevated/Gene/promotionrequests": {
+      "get": {
+        "tags": [
+          "Gene"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/elevated/Gene/groups": {
+      "get": {
+        "tags": [
+          "Gene"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Gene"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeneGroup"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeneGroup"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeneGroup"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/elevated/Gene/groups/{groupId}": {
+      "get": {
+        "tags": [
+          "Gene"
+        ],
+        "parameters": [
+          {
+            "name": "groupId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/elevated/Gene/{accessionNo}/externalId": {
+      "post": {
+        "tags": [
+          "Gene"
+        ],
+        "parameters": [
+          {
+            "name": "accessionNo",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeneExternalId"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeneExternalId"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeneExternalId"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/GeneConfig/promote/questionaire": {
+      "get": {
+        "tags": [
+          "GeneConfig"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/GeneConfig/groups/search-by-gene-id/{geneId}": {
+      "get": {
+        "tags": [
+          "GeneConfig"
+        ],
+        "parameters": [
+          {
+            "name": "geneId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/General/app-vars": {
+      "get": {
+        "tags": [
+          "General"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Hit": {
+      "post": {
+        "tags": [
+          "Hit"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/HitCSVDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/HitCSVDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/HitCSVDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Horizon/{entryPointName}": {
+      "get": {
+        "tags": [
+          "Horizon"
+        ],
+        "parameters": [
+          {
+            "name": "entryPointName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Horizon/by-accession/{accessionNumber}": {
+      "get": {
+        "tags": [
+          "Horizon"
+        ],
+        "parameters": [
+          {
+            "name": "accessionNumber",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Project": {
+      "get": {
+        "tags": [
+          "Project"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Project/{id}": {
+      "get": {
+        "tags": [
+          "Project"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Project"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProjectPriorityProbabilityDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProjectPriorityProbabilityDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProjectPriorityProbabilityDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Project/{projectId}/compoundevolution": {
+      "get": {
+        "tags": [
+          "Project"
+        ],
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/elevated/Project": {
+      "post": {
+        "tags": [
+          "Project"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProjectCreateDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProjectCreateDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProjectCreateDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/elevated/Project/unlinked": {
+      "post": {
+        "tags": [
+          "Project"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UnlinkedProjectCreateDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UnlinkedProjectCreateDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UnlinkedProjectCreateDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/elevated/Project/{id}": {
+      "post": {
+        "tags": [
+          "Project"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProjectEditDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProjectEditDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProjectEditDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/elevated/Project/{id}/terminate": {
+      "post": {
+        "tags": [
+          "Project"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProjectTerminateDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProjectTerminateDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProjectTerminateDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/elevated/Project/{id}/createH2L": {
+      "post": {
+        "tags": [
+          "Project"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/H2LDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/H2LDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/H2LDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/elevated/Project/{id}/createLO": {
+      "post": {
+        "tags": [
+          "Project"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LODTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LODTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LODTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/elevated/Project/{id}/createSP": {
+      "post": {
+        "tags": [
+          "Project"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SPDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SPDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SPDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/elevated/Project/{id}/createIND": {
+      "post": {
+        "tags": [
+          "Project"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/INDDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/INDDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/INDDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/elevated/Project/{id}/createP1": {
+      "post": {
+        "tags": [
+          "Project"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/P1DTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/P1DTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/P1DTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/elevated/Project/{projectId}/compoundevolution": {
+      "post": {
+        "tags": [
+          "Project"
+        ],
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CompoundEvolutionAddDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CompoundEvolutionAddDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CompoundEvolutionAddDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Screen": {
+      "post": {
+        "tags": [
+          "Screen"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Screen"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Screen"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Screen"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Screen"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Screen/phenotypic": {
+      "post": {
+        "tags": [
+          "Screen"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Screen"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Screen"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Screen"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Screen"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Screen/{id}": {
+      "get": {
+        "tags": [
+          "Screen"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/ScreenSequence/{screenId}": {
+      "post": {
+        "tags": [
+          "ScreenSequence"
+        ],
+        "parameters": [
+          {
+            "name": "screenId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ScreenSequence"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ScreenSequence"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ScreenSequence"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/batch/gene/Sync": {
+      "get": {
+        "tags": [
+          "Sync"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/BTask"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BTask"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BTask"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/batch/gene/Sync/{id}": {
+      "get": {
+        "tags": [
+          "Sync"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Sequence"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Sequence"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Sequence"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Target": {
+      "get": {
+        "tags": [
+          "Target"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Target/{id}": {
+      "get": {
+        "tags": [
+          "Target"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Target/{id}/history": {
+      "get": {
+        "tags": [
+          "Target"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/elevated/Target": {
+      "post": {
+        "tags": [
+          "Target"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GenePromotionRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GenePromotionRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GenePromotionRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/elevated/Target/{id}": {
+      "post": {
+        "tags": [
+          "Target"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Target"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Target"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Target"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/elevated/Target/{id}/summary": {
+      "post": {
+        "tags": [
+          "Target"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TargetSummaryDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TargetSummaryDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/TargetSummaryDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/elevated/Target/import": {
+      "post": {
+        "tags": [
+          "Target"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TargetImportDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TargetImportDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/TargetImportDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/elevated/Target/importComplex": {
+      "post": {
+        "tags": [
+          "Target"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TargetImportDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TargetImportDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/TargetImportDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Vote/{id}": {
+      "post": {
+        "tags": [
+          "Vote"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterVoteDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterVoteDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterVoteDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/elevated/Vote/freeze": {
+      "post": {
+        "tags": [
+          "Vote"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/elevated/Vote/enable": {
+      "post": {
+        "tags": [
+          "Vote"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/data-view/VTarget/dash-view": {
+      "get": {
+        "tags": [
+          "VTarget"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AppOrg": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "alias": {
+            "type": "string",
+            "nullable": true
+          },
+          "address": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AppRole": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "normalizedName": {
+            "type": "string",
+            "nullable": true
+          },
+          "concurrencyStamp": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "BTask": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "status": {
+            "type": "string",
+            "nullable": true
+          },
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "dateCreated": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "dateCompleted": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Compound": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "strainId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "externalCompoundIds": {
+            "type": "string",
+            "nullable": true
+          },
+          "smile": {
+            "type": "string",
+            "nullable": true
+          },
+          "molWeight": {
+            "type": "string",
+            "nullable": true
+          },
+          "molArea": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CompoundEvolutionAddDTO": {
+        "type": "object",
+        "properties": {
+          "smile": {
+            "type": "string",
+            "nullable": true
+          },
+          "molWeight": {
+            "type": "string",
+            "nullable": true
+          },
+          "molArea": {
+            "type": "string",
+            "nullable": true
+          },
+          "projectId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "notes": {
+            "type": "string",
+            "nullable": true
+          },
+          "mic": {
+            "type": "number",
+            "format": "double"
+          },
+          "iC50": {
+            "type": "number",
+            "format": "double"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "createdBy": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Discussion": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "reference": {
+            "type": "string",
+            "nullable": true
+          },
+          "section": {
+            "type": "string",
+            "nullable": true
+          },
+          "topic": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "postedBy": {
+            "type": "string",
+            "nullable": true
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "mentions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "replies": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Reply"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Gene": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "strainId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "accessionNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "geneName": {
+            "type": "string",
+            "nullable": true
+          },
+          "function": {
+            "type": "string",
+            "nullable": true
+          },
+          "product": {
+            "type": "string",
+            "nullable": true
+          },
+          "functionalCategory": {
+            "type": "string",
+            "nullable": true
+          },
+          "geneExternalIds": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GeneExternalId"
+            },
+            "nullable": true
+          },
+          "genePublicData": {
+            "$ref": "#/components/schemas/GenePublicData"
+          },
+          "geneEssentiality": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GeneEssentiality"
+            },
+            "nullable": true
+          },
+          "geneProteinProduction": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GeneProteinProduction"
+            },
+            "nullable": true
+          },
+          "geneProteinActivityAssay": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GeneProteinActivityAssay"
+            },
+            "nullable": true
+          },
+          "geneCRISPRiStrain": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GeneCRISPRiStrain"
+            },
+            "nullable": true
+          },
+          "geneResistanceMutation": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GeneResistanceMutation"
+            },
+            "nullable": true
+          },
+          "geneVulnerability": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GeneVulnerability"
+            },
+            "nullable": true
+          },
+          "geneHypomorphs": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GeneHypomorph"
+            },
+            "nullable": true
+          },
+          "geneUnpublishedStructures": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GeneUnpublishedStructures"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "GeneCRISPRiStrain": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "geneId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "geneAccessionNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "crispRiStrain": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "createdBy": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "GeneEssentiality": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "geneId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "geneAccessionNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "classification": {
+            "type": "string",
+            "nullable": true
+          },
+          "condition": {
+            "type": "string",
+            "nullable": true
+          },
+          "strain": {
+            "type": "string",
+            "nullable": true
+          },
+          "method": {
+            "type": "string",
+            "nullable": true
+          },
+          "reference": {
+            "type": "string",
+            "nullable": true
+          },
+          "notes": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "createdBy": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "GeneExternalId": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "geneId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "geneAccessionNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "externalIdRef": {
+            "type": "string",
+            "nullable": true
+          },
+          "externalId": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "createdBy": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "GeneGroup": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "strainId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "genes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GeneGroupGenes"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "GeneGroupGenes": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "geneGroupId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "geneId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "accessionNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "gene": {
+            "$ref": "#/components/schemas/Gene"
+          },
+          "strainId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "additionalProperties": false
+      },
+      "GeneHypomorph": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "geneId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "geneAccessionNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "knockdownStrain": {
+            "type": "string",
+            "nullable": true
+          },
+          "phenotype": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "createdBy": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "GenePromotionRequest": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "genePromtionRequestGenes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GenePromtionRequestGene"
+            },
+            "nullable": true
+          },
+          "targetName": {
+            "type": "string",
+            "nullable": true
+          },
+          "targetType": {
+            "type": "string",
+            "nullable": true
+          },
+          "genePromotionRequestStatus": {
+            "type": "string",
+            "nullable": true
+          },
+          "genePromotionRequestValues": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GenePromotionRequestValue"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "GenePromotionRequestValue": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "genePromotionRequestId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "question": {
+            "$ref": "#/components/schemas/Question"
+          },
+          "questionId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "answer": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "answerdBy": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "GenePromtionRequestGene": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "genePromotionRequestId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "geneId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "additionalProperties": false
+      },
+      "GeneProteinActivityAssay": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "geneId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "geneAccessionNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "activity": {
+            "type": "string",
+            "nullable": true
+          },
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "throughput": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "createdBy": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "GeneProteinProduction": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "geneId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "geneAccessionNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "production": {
+            "type": "string",
+            "nullable": true
+          },
+          "method": {
+            "type": "string",
+            "nullable": true
+          },
+          "purity": {
+            "type": "string",
+            "nullable": true
+          },
+          "date": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "createdBy": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "GenePublicData": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "geneId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "geneAccessionNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "proteomics": {
+            "type": "string",
+            "nullable": true
+          },
+          "mutant": {
+            "type": "string",
+            "nullable": true
+          },
+          "comments": {
+            "type": "string",
+            "nullable": true
+          },
+          "start": {
+            "type": "string",
+            "nullable": true
+          },
+          "end": {
+            "type": "string",
+            "nullable": true
+          },
+          "orientation": {
+            "type": "string",
+            "nullable": true
+          },
+          "geneLength": {
+            "type": "string",
+            "nullable": true
+          },
+          "location": {
+            "type": "string",
+            "nullable": true
+          },
+          "geneSequence": {
+            "type": "string",
+            "nullable": true
+          },
+          "molecularMass": {
+            "type": "string",
+            "nullable": true
+          },
+          "isoelectricPoint": {
+            "type": "string",
+            "nullable": true
+          },
+          "proteinLength": {
+            "type": "string",
+            "nullable": true
+          },
+          "proteinSequence": {
+            "type": "string",
+            "nullable": true
+          },
+          "pfam": {
+            "type": "string",
+            "nullable": true
+          },
+          "m_Leprae": {
+            "type": "string",
+            "nullable": true
+          },
+          "m_Marinum": {
+            "type": "string",
+            "nullable": true
+          },
+          "m_Smegmatis": {
+            "type": "string",
+            "nullable": true
+          },
+          "cryo": {
+            "type": "string",
+            "nullable": true
+          },
+          "xRay": {
+            "type": "string",
+            "nullable": true
+          },
+          "model": {
+            "type": "string",
+            "nullable": true
+          },
+          "ligand": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "GenePublicEditDTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "accessionNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "geneName": {
+            "type": "string",
+            "nullable": true
+          },
+          "function": {
+            "type": "string",
+            "nullable": true
+          },
+          "product": {
+            "type": "string",
+            "nullable": true
+          },
+          "functionalCategory": {
+            "type": "string",
+            "nullable": true
+          },
+          "genePublicData": {
+            "$ref": "#/components/schemas/GenePublicData"
+          }
+        },
+        "additionalProperties": false
+      },
+      "GeneResistanceMutation": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "geneId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "geneAccessionNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "mutation": {
+            "type": "string",
+            "nullable": true
+          },
+          "isolate": {
+            "type": "string",
+            "nullable": true
+          },
+          "parentStrain": {
+            "type": "string",
+            "nullable": true
+          },
+          "compound": {
+            "type": "string",
+            "nullable": true
+          },
+          "shiftInMIC": {
+            "type": "string",
+            "nullable": true
+          },
+          "org": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "createdBy": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "GeneUnpublishedStructures": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "geneId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "geneAccessionNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "organization": {
+            "type": "string",
+            "nullable": true
+          },
+          "method": {
+            "type": "string",
+            "nullable": true
+          },
+          "resolution": {
+            "type": "string",
+            "nullable": true
+          },
+          "ligands": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "createdBy": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "GeneVulnerability": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "geneId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "geneAccessionNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "rank": {
+            "type": "string",
+            "nullable": true
+          },
+          "uVi": {
+            "type": "string",
+            "nullable": true
+          },
+          "iVi": {
+            "type": "string",
+            "nullable": true
+          },
+          "viRatio": {
+            "type": "string",
+            "nullable": true
+          },
+          "vulnerabilityCondition": {
+            "type": "string",
+            "nullable": true
+          },
+          "operon": {
+            "type": "string",
+            "nullable": true
+          },
+          "confounded": {
+            "type": "string",
+            "nullable": true
+          },
+          "shell2015Operon": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "createdBy": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "H2LDTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "h2LStart": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "h2LDescription": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Header": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/HeaderItem"
+            },
+            "nullable": true,
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "HeaderItem": {
+        "type": "object",
+        "additionalProperties": false
+      },
+      "Hit": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "screenId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "targetName": {
+            "type": "string",
+            "nullable": true
+          },
+          "library": {
+            "type": "string",
+            "nullable": true
+          },
+          "source": {
+            "type": "string",
+            "nullable": true
+          },
+          "method": {
+            "type": "string",
+            "nullable": true
+          },
+          "mic": {
+            "type": "number",
+            "format": "double"
+          },
+          "micCondition": {
+            "type": "string",
+            "nullable": true
+          },
+          "iC50": {
+            "type": "number",
+            "format": "double"
+          },
+          "clusterGroup": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "compoundId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "compound": {
+            "$ref": "#/components/schemas/Compound"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "createdBy": {
+            "type": "string",
+            "nullable": true
+          },
+          "voteId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "vote": {
+            "$ref": "#/components/schemas/Vote"
+          }
+        },
+        "additionalProperties": false
+      },
+      "HitCSVDTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "screenId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "externalCompoundIds": {
+            "type": "string",
+            "nullable": true
+          },
+          "targetName": {
+            "type": "string",
+            "nullable": true
+          },
+          "library": {
+            "type": "string",
+            "nullable": true
+          },
+          "source": {
+            "type": "string",
+            "nullable": true
+          },
+          "method": {
+            "type": "string",
+            "nullable": true
+          },
+          "mic": {
+            "type": "number",
+            "format": "double"
+          },
+          "micCondition": {
+            "type": "string",
+            "nullable": true
+          },
+          "iC50": {
+            "type": "number",
+            "format": "double"
+          },
+          "clusterGroup": {
+            "type": "string",
+            "nullable": true
+          },
+          "smile": {
+            "type": "string",
+            "nullable": true
+          },
+          "molWeight": {
+            "type": "string",
+            "nullable": true
+          },
+          "molArea": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "IActualSequence": {
+        "type": "object",
+        "properties": {
+          "characters": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "INDDTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "indStart": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "indDescription": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "LODTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "loStart": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "loDescription": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "P1DTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "p1Start": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "p1Description": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ProjectCreateDTO": {
+        "type": "object",
+        "properties": {
+          "projectName": {
+            "type": "string",
+            "nullable": true
+          },
+          "screenId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "baseHits": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Hit"
+            },
+            "nullable": true
+          },
+          "representationStructure": {
+            "$ref": "#/components/schemas/Compound"
+          },
+          "primaryOrg": {
+            "$ref": "#/components/schemas/AppOrg"
+          },
+          "supportingOrgs": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AppOrg"
+            },
+            "nullable": true
+          },
+          "fhaStart": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "fhaDescription": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ProjectEditDTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "priority": {
+            "type": "string",
+            "nullable": true
+          },
+          "priorityDescription": {
+            "type": "string",
+            "nullable": true
+          },
+          "probability": {
+            "type": "string",
+            "nullable": true
+          },
+          "probabilityDescription": {
+            "type": "string",
+            "nullable": true
+          },
+          "teamPriority": {
+            "type": "string",
+            "nullable": true
+          },
+          "teamPriorityDescription": {
+            "type": "string",
+            "nullable": true
+          },
+          "teamProbability": {
+            "type": "string",
+            "nullable": true
+          },
+          "teamProbabilityDescription": {
+            "type": "string",
+            "nullable": true
+          },
+          "fhaStart": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "fhaPredictedStart": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "fhaDescription": {
+            "type": "string",
+            "nullable": true
+          },
+          "h2LStart": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "h2LPredictedStart": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "h2LDescription": {
+            "type": "string",
+            "nullable": true
+          },
+          "loStart": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "loPredictedStart": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "loDescription": {
+            "type": "string",
+            "nullable": true
+          },
+          "spStart": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "spPredictedStart": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "spDescription": {
+            "type": "string",
+            "nullable": true
+          },
+          "pcdDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "pcdDescription": {
+            "type": "string",
+            "nullable": true
+          },
+          "indStart": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "indPredictedStart": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "indDescription": {
+            "type": "string",
+            "nullable": true
+          },
+          "clinicalP1Start": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "clinicalP1PredictedStart": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "clinicalP1Description": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ProjectPriorityProbabilityDTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "teamPriority": {
+            "type": "string",
+            "nullable": true
+          },
+          "teamPriorityDescription": {
+            "type": "string",
+            "nullable": true
+          },
+          "teamProbability": {
+            "type": "string",
+            "nullable": true
+          },
+          "teamProbabilityDescription": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ProjectTerminateDTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "projectName": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Question": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "identification": {
+            "type": "string",
+            "nullable": true
+          },
+          "module": {
+            "type": "string",
+            "nullable": true
+          },
+          "subModule": {
+            "type": "string",
+            "nullable": true
+          },
+          "questionBody": {
+            "type": "string",
+            "nullable": true
+          },
+          "notes": {
+            "type": "string",
+            "nullable": true
+          },
+          "toolTip": {
+            "type": "string",
+            "nullable": true
+          },
+          "possibleAnswers": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "RegisterDto": {
+        "required": [
+          "displayName",
+          "email",
+          "orgId",
+          "roles"
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "format": "email"
+          },
+          "displayName": {
+            "type": "string"
+          },
+          "orgId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "bio": {
+            "type": "string",
+            "nullable": true
+          },
+          "roles": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "lock": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "RegisterVoteDTO": {
+        "type": "object",
+        "properties": {
+          "voteId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "voteButton": {
+            "type": "string",
+            "nullable": true
+          },
+          "comment": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Reply": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "discussionId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "body": {
+            "type": "string",
+            "nullable": true
+          },
+          "postedBy": {
+            "type": "string",
+            "nullable": true
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "mentions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SPDTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "spStart": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "spDescription": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Screen": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "strainId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "baseTarget": {
+            "$ref": "#/components/schemas/Target"
+          },
+          "targetId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "screenName": {
+            "type": "string",
+            "nullable": true
+          },
+          "screenType": {
+            "type": "string",
+            "nullable": true
+          },
+          "method": {
+            "type": "string",
+            "nullable": true
+          },
+          "targetName": {
+            "type": "string",
+            "nullable": true
+          },
+          "geneName": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "type": "string",
+            "nullable": true
+          },
+          "org": {
+            "$ref": "#/components/schemas/AppOrg"
+          },
+          "orgId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "promotionDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "promoter": {
+            "type": "string",
+            "nullable": true
+          },
+          "screenSequences": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ScreenSequence"
+            },
+            "nullable": true
+          },
+          "validatedHits": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Hit"
+            },
+            "nullable": true
+          },
+          "notes": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "createdBy": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ScreenSequence": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "screenId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "targetName": {
+            "type": "string",
+            "nullable": true
+          },
+          "method": {
+            "type": "string",
+            "nullable": true
+          },
+          "protocol": {
+            "type": "string",
+            "nullable": true
+          },
+          "library": {
+            "type": "string",
+            "nullable": true
+          },
+          "scientist": {
+            "type": "string",
+            "nullable": true
+          },
+          "startDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "endDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "unverifiedHitCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "noOfCompoundsScreened": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "concentration": {
+            "type": "number",
+            "format": "float"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "createdBy": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Sequence": {
+        "type": "object",
+        "properties": {
+          "header": {
+            "$ref": "#/components/schemas/Header"
+          },
+          "data": {
+            "$ref": "#/components/schemas/IActualSequence"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Target": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "strainId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "targetGenes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TargetGene"
+            },
+            "nullable": true
+          },
+          "bucket": {
+            "type": "string",
+            "nullable": true
+          },
+          "impactScore": {
+            "type": "number",
+            "format": "double"
+          },
+          "impactComplete": {
+            "type": "number",
+            "format": "double"
+          },
+          "likeScore": {
+            "type": "number",
+            "format": "double"
+          },
+          "likeComplete": {
+            "type": "number",
+            "format": "double"
+          },
+          "screeningScore": {
+            "type": "number",
+            "format": "double"
+          },
+          "screeningComplete": {
+            "type": "number",
+            "format": "double"
+          },
+          "structureScore": {
+            "type": "number",
+            "format": "double"
+          },
+          "structureComplete": {
+            "type": "number",
+            "format": "double"
+          },
+          "vulnerabilityRatio": {
+            "type": "number",
+            "format": "double"
+          },
+          "vulnerabilityRank": {
+            "type": "number",
+            "format": "double"
+          },
+          "htsFeasibility": {
+            "type": "number",
+            "format": "double"
+          },
+          "sbdFeasibility": {
+            "type": "number",
+            "format": "double"
+          },
+          "progressibility": {
+            "type": "number",
+            "format": "double"
+          },
+          "safety": {
+            "type": "number",
+            "format": "double"
+          },
+          "targetScorecard": {
+            "$ref": "#/components/schemas/TargetScorecard"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "createdBy": {
+            "type": "string",
+            "nullable": true
+          },
+          "background": {
+            "type": "string",
+            "nullable": true
+          },
+          "enablement": {
+            "type": "string",
+            "nullable": true
+          },
+          "strategy": {
+            "type": "string",
+            "nullable": true
+          },
+          "challenges": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "TargetGene": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "targetId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "geneId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "accessionNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "gene": {
+            "$ref": "#/components/schemas/Gene"
+          },
+          "strainId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "additionalProperties": false
+      },
+      "TargetImportDTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "genePromtionRequestGenes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GenePromtionRequestGene"
+            },
+            "nullable": true
+          },
+          "targetName": {
+            "type": "string",
+            "nullable": true
+          },
+          "targetType": {
+            "type": "string",
+            "nullable": true
+          },
+          "genePromotionRequestStatus": {
+            "type": "string",
+            "nullable": true
+          },
+          "genePromotionRequestValues": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GenePromotionRequestValue"
+            },
+            "nullable": true
+          },
+          "bucket": {
+            "type": "string",
+            "nullable": true
+          },
+          "simpleProteinAccessionNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "impactScore": {
+            "type": "number",
+            "format": "double"
+          },
+          "impactComplete": {
+            "type": "number",
+            "format": "double"
+          },
+          "likeScore": {
+            "type": "number",
+            "format": "double"
+          },
+          "likeComplete": {
+            "type": "number",
+            "format": "double"
+          },
+          "screeningScore": {
+            "type": "number",
+            "format": "double"
+          },
+          "screeningComplete": {
+            "type": "number",
+            "format": "double"
+          },
+          "structureScore": {
+            "type": "number",
+            "format": "double"
+          },
+          "structureComplete": {
+            "type": "number",
+            "format": "double"
+          },
+          "vulnerabilityRatio": {
+            "type": "number",
+            "format": "double"
+          },
+          "vulnerabilityRank": {
+            "type": "number",
+            "format": "double"
+          },
+          "htsFeasibility": {
+            "type": "number",
+            "format": "double"
+          },
+          "sbdFeasibility": {
+            "type": "number",
+            "format": "double"
+          },
+          "progressibility": {
+            "type": "number",
+            "format": "double"
+          },
+          "safety": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false
+      },
+      "TargetScoreCardValue": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "targetScorecardId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "targetName": {
+            "type": "string",
+            "nullable": true
+          },
+          "question": {
+            "$ref": "#/components/schemas/Question"
+          },
+          "questionId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "questionIdentification": {
+            "type": "string",
+            "nullable": true
+          },
+          "questionModule": {
+            "type": "string",
+            "nullable": true
+          },
+          "questionSubModule": {
+            "type": "string",
+            "nullable": true
+          },
+          "answer": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "answerdBy": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "TargetScorecard": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "targetID": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "targetName": {
+            "type": "string",
+            "nullable": true
+          },
+          "targetScoreCardValues": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TargetScoreCardValue"
+            },
+            "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "createdBy": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "TargetSummaryDTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "background": {
+            "type": "string",
+            "nullable": true
+          },
+          "enablement": {
+            "type": "string",
+            "nullable": true
+          },
+          "strategy": {
+            "type": "string",
+            "nullable": true
+          },
+          "challenges": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UnlinkedProjectCreateDTO": {
+        "type": "object",
+        "properties": {
+          "projectName": {
+            "type": "string",
+            "nullable": true
+          },
+          "representationStructure": {
+            "$ref": "#/components/schemas/Compound"
+          },
+          "representationStructureSMILE": {
+            "type": "string",
+            "nullable": true
+          },
+          "representationStructureExternalCompoundIds": {
+            "type": "string",
+            "nullable": true
+          },
+          "primaryOrg": {
+            "$ref": "#/components/schemas/AppOrg"
+          },
+          "supportingOrgs": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AppOrg"
+            },
+            "nullable": true
+          },
+          "fhaStart": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "fhaDescription": {
+            "type": "string",
+            "nullable": true
+          },
+          "molWeight": {
+            "type": "string",
+            "nullable": true
+          },
+          "molArea": {
+            "type": "string",
+            "nullable": true
+          },
+          "mic": {
+            "type": "number",
+            "format": "double"
+          },
+          "iC50": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UserDto": {
+        "required": [
+          "email"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "nullable": true
+          },
+          "displayName": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string"
+          },
+          "roles": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "bio": {
+            "type": "string",
+            "nullable": true
+          },
+          "org": {
+            "$ref": "#/components/schemas/AppOrg"
+          },
+          "lock": {
+            "type": "boolean"
+          },
+          "archived": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Vote": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "elementId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "positive": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "neutral": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "negative": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "isVotingAllowed": {
+            "type": "boolean"
+          },
+          "lastModified": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "voters": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Voter"
+            },
+            "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "createdBy": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Voter": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "voteId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "voterEmail": {
+            "type": "string",
+            "nullable": true
+          },
+          "votedPositive": {
+            "type": "boolean"
+          },
+          "votedNeutral": {
+            "type": "boolean"
+          },
+          "votedNegative": {
+            "type": "boolean"
+          },
+          "votedOn": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "comment": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "securitySchemes": {
+      "Bearer": {
+        "type": "apiKey",
+        "description": "JWT Authorization header using the Bearer scheme. \\r\\n\\r\\n \r\n                  Enter 'Bearer' [space] and then your token in the text input below.\r\n                  \\r\\n\\r\\nExample: 'Bearer 12345abcdef'",
+        "name": "Authorization",
+        "in": "header"
+      }
+    }
+  },
+  "security": [
+    {
+      "Bearer": [ ]
+    }
+  ]
+}
