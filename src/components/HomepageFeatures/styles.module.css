@@ -3,12 +3,21 @@
   align-items: center;
   padding: 2rem 0;
   width: 100%;
-  min-height: 30vh;
-  padding-bottom: 20vh;
-  margin-top: 5vh;
+  min-height: 30vh;  
 }
 
 .featureSvg {
   height: 200px;
   width: 200px;
+}
+.boxEnclose {
+  padding: 4rem 3rem 5rem;
+  border-radius: 1rem;
+  background-image: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.4) 0%,
+    #ffffff 100%
+  );
+  border: 1px solid #eee;
+  box-shadow: 0 4px 6px -1px #0000001a, 0 2px 4px -1px #0000000f;
 }

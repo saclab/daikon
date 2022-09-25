@@ -16,7 +16,7 @@ function HomepageHeader() {
         <div className="container">
           <h1 className="hero__title">{siteConfig.title}</h1>
           <p className="hero__subtitle">
-            <b>Open source</b> solution designed to <i>integrate</i> the many
+            <b>Open source</b> framework to <i>integrate</i> the many
             aspects of <b>target-based</b> drug discovery.
           </p>
 
@@ -44,7 +44,7 @@ function HomepageHeader() {
 export default function Home() {
   const { siteConfig } = useDocusaurusContext();
   return (
-    <div className={styles.backgroundLogin}>
+    <div >
       <Layout
         title={`Home`}
         description="Description will go into a meta tag in <head />"
