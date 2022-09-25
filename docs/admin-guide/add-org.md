@@ -4,7 +4,7 @@
 <br />
 <br />
 
-In the admin pannel open the **"User Manager"** Module and go to **"Orgs"** section.
+In the admin panel open the **"User Manager"** Module and go to **"Orgs"** section.
 <br />
 <img src="/daikon/img/AdminGuide/UserMgmt/AddOrgButton.png" />
 <br />
