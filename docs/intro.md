@@ -7,7 +7,7 @@ sidebar_position: 1
 DAIKON is a framework developed for  pharma–academic consortium-based drug discovery efforts to share ideas, technologies, compounds, assays, projects and portfolios. 
 
 :::warning Active Development
-The framework is under heavy development. API endpoints may change frequently.
+The framework is under heavy development. Documents are updated frequently.
 :::
 
 ### What you'll need
