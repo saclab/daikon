@@ -1,9 +1,9 @@
 # Quick Start
 
-Clone the **daikon-server-core** github to your local workspace
+Clone the **daikon-core-server** github to your local workspace
 
 ```bash
-git clone https://github.com/saclab/daikon-server.git
+git clone https://github.com/saclab/daikon-core-server.git
 ```
 
 In the project directory create a .env file

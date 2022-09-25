@@ -73,13 +73,13 @@ const config = {
           {to: '/blog', label: 'Blog', position: 'left'},
           {to: '/blog', label: 'Community', position: 'left'},
           {
-            href: 'https://github.com/saclab/daikon-server',
-            label: 'GH Daikon-Core',
+            href: 'https://github.com/saclab/daikon-core-server',
+            label: 'GH Core-Server',
             position: 'right',
           },
           {
-            href: 'https://github.com/saclab/daikon-app',
-            label: 'GH Daikon-App',
+            href: 'https://github.com/saclab/daikon-core-webapp',
+            label: 'GH Core-WebApp',
             position: 'right',
           },
         ],
