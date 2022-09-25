@@ -4,7 +4,8 @@ sidebar_position: 1
 
 # An Introduction
 
-Let's discover **Docusaurus in less than 5 minutes**.
+DAIKON is a framework developed for  pharma–academic consortium-based drug discovery efforts to share ideas, technologies, compounds, assays, projects and portfolios. 
+
 
 ## Getting Started
 
