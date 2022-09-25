@@ -4,36 +4,42 @@ import Link from "@docusaurus/Link";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Layout from "@theme/Layout";
 import HomepageFeatures from "@site/src/components/HomepageFeatures";
-
+import HomePageScope from "@site/src/components/HomepageFeatures/HomePageScope";
 import styles from "./index.module.css";
+
 
 function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext();
   return (
-    <header className={clsx("hero", styles.heroBanner)}>
-      <div className="container">
-        <h1 className="hero__title">{siteConfig.title}</h1>
-        <p className="hero__subtitle">
-          <b>Open source</b> solution designed to <i>integrate</i> the many
-          aspects of <b>target-based</b> drug discovery.
-        </p>
+    <div>
+      <header className={clsx("hero", styles.heroBanner)}>
+        <div className="container">
+          <h1 className="hero__title">{siteConfig.title}</h1>
+          <p className="hero__subtitle">
+            <b>Open source</b> solution designed to <i>integrate</i> the many
+            aspects of <b>target-based</b> drug discovery.
+          </p>
 
-        <p>
-          Deploy on-premise or on cloud and bring in your Organization's users
-          quickly with Active Directory Connect{" "}
-        </p>
-        <div className={styles.buttons}>
-          <Link
-            className="button button--secondary button--md"
-            to="/docs/intro"
-          >
-            Developers Guide
-          </Link>
+          <p>
+            Deploy on-premise or on cloud and bring in your Organization's users
+            quickly with Active Directory Connect{" "}
+          </p>
+          <div className={styles.buttons}>
+            <Link
+              className="button button--secondary button--md"
+              to="/docs/intro"
+            >
+              Developers Guide
+            </Link>
+          </div>
         </div>
-      </div>
-    </header>
+      </header>
+    </div>
+
   );
 }
+
+
 
 export default function Home() {
   const { siteConfig } = useDocusaurusContext();
@@ -46,6 +52,7 @@ export default function Home() {
         <HomepageHeader />
         <main>
           <HomepageFeatures />
+          <HomePageScope />
         </main>
       </Layout>
     </div>
