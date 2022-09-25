@@ -6,10 +6,10 @@
 
 In the admin pannel open the **"User Manager"** Module and go to **"Orgs"** section.
 <br />
-<img src="/daikon/img/AdminGuide/UserMgmt/AddUserButton.png" />
+<img src="/daikon/img/AdminGuide/UserMgmt/AddOrgButton.png" />
 <br />
 <br />
 
-<img src="/daikon/img/AdminGuide/UserMgmt/AddUserForm.png" width="400" />
+<img src="/daikon/img/AdminGuide/UserMgmt/AddOrgForm.png" width="400" />
 <br />
 <br />
