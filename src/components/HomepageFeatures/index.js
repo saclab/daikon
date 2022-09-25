@@ -31,12 +31,7 @@ const FeatureList = [
 
 function Feature({ Svg, title, description }) {
   return (
-    <div className={clsx("col col--4")} style={{
-      background: "rgba(255,255,255, 0.4)",
-      minHeight: "140px",
-      padding: "10px",
-      // borderRadius: "10px"
-    }}>
+    <div className={clsx("col col--4")} >
       <div className="text--center">
         <Svg className={styles.featureSvg} role="img" />
       </div>
@@ -60,7 +55,12 @@ function Feature({ Svg, title, description }) {
 export default function HomepageFeatures() {
   return (
     <section className={styles.features}>
-      <div className="container">
+      <div className="container" style={{
+      background: "rgba(255,255,255, 0.4)",
+      minHeight: "140px",
+      padding: "10px",
+      borderRadius: "10px"
+    }}>
         <div className="row">
           {FeatureList.map((props, idx) => (
             <Feature key={idx} {...props} />
