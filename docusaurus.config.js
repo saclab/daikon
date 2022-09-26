@@ -91,8 +91,24 @@ const config = {
             title: 'Docs',
             items: [
               {
-                label: 'Tutorial',
-                to: '/docs/intro',
+                label: 'Deployment Manual',
+                to: '/docs/category/deployment-manual',
+              },
+              {
+                label: 'Developers Guide',
+                to: '/docs/category/developers-guide',
+              },
+              {
+                label: 'Admin Guide',
+                to: '/docs/category/admin-guide',
+              },
+              {
+                label: 'User Guide',
+                to: '/docs/category/admin-guide',
+              },
+              {
+                label: 'API reference',
+                to: '/docs/category/api',
               },
             ],
           },
@@ -100,16 +116,12 @@ const config = {
             title: 'Community',
             items: [
               {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+                label: 'Sacchettini Laboratory',
+                href: 'https://saclab.biobio.tamu.edu/saclab/',
               },
               {
-                label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
-              },
-              {
-                label: 'Twitter',
-                href: 'https://twitter.com/docusaurus',
+                label: 'TB Drug Accelerator',
+                href: 'https://www.tbdrugaccelerator.org/',
               },
             ],
           },
@@ -127,7 +139,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} DAIKON, Inc. Built with Docusaurus.`,
+        copyright: `${new Date().getFullYear()} DAIKON | Documentation with Docusaurus.`,
       },
       prism: {
         theme: lightCodeTheme,

@@ -16,7 +16,7 @@ function HomepageHeader() {
         <div className="container">
           <h1 className="hero__title">{siteConfig.title}</h1>
           <p className="hero__subtitle">
-            <b>Open source</b> foundation framework <i>integrating</i> <b>target-based</b> drug discovery workflows.
+            <b>Open source</b> foundational framework <i>integrating</i> <b>target-based</b> drug discovery workflows.
           </p>
 
           <p>
