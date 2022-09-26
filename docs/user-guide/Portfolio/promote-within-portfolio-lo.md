@@ -1,4 +1,4 @@
-# Promote a project within the portfolio
+# Promote a project within the portfolio (H2L to LO to SP)
 
 If satisfactory molecules are identified and a certain degree of biological activity is established, a lead series is declared, and the project moves from the H2L to the lead optimization (LO) stage. Further additional studies and improvements are done to move the compounds to the SP stage.
 
@@ -50,3 +50,5 @@ There are three sub stages in the Portfolio component - H2L, LO and SP.
 <img src="/daikon/img/UserGuide/H2L/PortfolioCompoundEvolutionForm.png" />
 <br />
 <br />
+
+4. Promoting to SP has very similar process as above. Promoting a portfolio from SP automatically creates a project in the post portfolio.
