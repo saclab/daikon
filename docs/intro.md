@@ -21,7 +21,7 @@ The framework is under heavy development. Documents are updated frequently.
 
 ## Getting Started
 
-Start by cloning **[daikon-core-server](./category/daikon-core-server) and [daikon-core-webapp](./category/daikon-core-webclient)**.
+Start by cloning daikon-core-server and daikon-core-webapp**.
 
 ## Follow our qucik start guides
 Guides to start the project are under "Deployment Guide" section
