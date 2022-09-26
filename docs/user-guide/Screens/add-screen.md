@@ -3,7 +3,7 @@
 Typically, a large number of screening efforts are performed frequently for a target. There are many screening techniques used to perform a screen. DAIKON stores target-based and phenotypic screens in the Screen component.
 
 <br />
-<img src="/daikon/img/UserGuide/ScreenPanel.png" />
+<img src="/daikon/img/UserGuide/Screens/ScreenPanel.png" />
 <br />
 <br />
 
@@ -11,7 +11,7 @@ Typically, a large number of screening efforts are performed frequently for a ta
 1. To add a target-based screen, go to Targets, and click on  **"Add a Screen"** in **"Actions"**.
 
 <br />
-<img src="/daikon/img/UserGuide/AddScreenOption.png" />
+<img src="/daikon/img/UserGuide/Screens/AddScreenOption.png" />
 <br />
 <br />
 
@@ -25,7 +25,7 @@ Typically, a large number of screening efforts are performed frequently for a ta
 
 
 <br />
-<img src="/daikon/img/UserGuide/AddScreenForm.png" />
+<img src="/daikon/img/UserGuide/Screens/AddScreenForm.png" />
 <br />
 <br />
 

@@ -1,7 +1,7 @@
 # Add a phenotypic screen
 
 <br />
-<img src="/daikon/img/UserGuide/ScreenPanel.png" />
+<img src="/daikon/img/UserGuide/Screens/ScreenPanel.png" />
 <br />
 <br />
 
@@ -9,7 +9,7 @@
 1. To add a phenotypic screen, go to Screens, and click on  **"+"**  next to **"Phenotypic"**.
 
 <br />
-<img src="/daikon/img/UserGuide/AddPhenotypic.png" />
+<img src="/daikon/img/UserGuide/Screens/AddPhenotypic.png" />
 <br />
 <br />
 
@@ -22,6 +22,6 @@
 3. Click on **"Add Phenotypic Screen"** to submit
 
 <br />
-<img src="/daikon/img/UserGuide/AddPhenotypicForm.png" />
+<img src="/daikon/img/UserGuide/Screens/AddPhenotypicForm.png" />
 <br />
 <br />
