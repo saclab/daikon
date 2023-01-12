@@ -6,7 +6,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'D A I K O N',
+  title: 'Daikon',
   tagline: 'Data Acquisition, Integration, and Knowledge capture applicatiON for target-based drug discovery',
   url: 'https://your-docusaurus-test-site.com',
   baseUrl: '/daikon/',
@@ -61,7 +61,7 @@ const config = {
         title: 'DAIKON',
         logo: {
           alt: 'Daikon Logo',
-          src: 'img/logo.svg',
+          src: 'img/logo-200.png',
         },
         items: [
           {
