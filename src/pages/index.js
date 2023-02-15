@@ -14,17 +14,29 @@ function HomepageHeader() {
     <div>
       <header className={clsx("hero", styles.heroBanner)}>
         <div className="container">
+          
           <h1
             className="hero__title"
             style={{ letterSpacing: "0.2em", textTransform: "capitalize" }}
           >
             {/* {siteConfig.title} */}DAIKON
           </h1>
-          <p className="hero__subtitle" style={{ color: "#332288" }}>
+          <p className="hero__subtitle">
             <b>Open source</b> foundational framework <i>integrating</i>{" "}
             <b>target-based</b> drug discovery workflows.
           </p>
+          <img
+            src="/daikon/img/Components/horizion-view.gif"
+            style={{
+              width: "700px",
+              height: "300px",
+              objectFit: "cover",
+              margin: "1em",
+              filter: "brightness(110%) contrast(100%)"
+            }}
+          />
           <p>
+            
             <b>
               Deploy on-premise or on cloud and bring in your Organization's
               users quickly with Active Directory Connect. DAIKON is a framework
@@ -33,6 +45,7 @@ function HomepageHeader() {
               and portfolios.
             </b>
           </p>
+          
           <Box
             direction="row"
             pad="medium"

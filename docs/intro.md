@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # An Introduction
 
-DAIKON is a framework developed for  pharma–academic consortium-based drug discovery efforts to share ideas, technologies, compounds, assays, projects and portfolios. 
+DAIKON is a framework developed for pharma–academic consortium-based drug discovery efforts to share ideas, technologies, compounds, assays, projects and portfolios.
 
 In the field of drug discovery, developing new therapeutic agents is a complex and time-consuming process that requires significant resources, expertise, and collaboration. To support the drug discovery process, a comprehensive knowledge capture and project management tool can be an invaluable asset. This tool can help researchers capture and organize important scientific data, streamline communication and collaboration, and manage the workflow from early-stage drug discovery through clinical development.
 
@@ -27,13 +27,14 @@ The tool can help speed up the drug discovery process and reduce the risk of err
 
 ## Getting Started
 
-Start by cloning daikon-core-server and daikon-core-webapp**.
+Start by cloning daikon-core-server and daikon-core-webapp\*\*.
 
 Daikon uses docker that simplifies software deployment by packaging applications and their dependencies into portable containers that can be easily deployed across different environments. This helps eliminate compatibility issues and allows for faster and more efficient deployment of software
 
 ## Follow our qucik start guides
+
 Guides to start the project are under **"Deployment Guide"** section
 
 :::caution Development & Testing
-The framework is in beta. 
+The framework is in beta.
 :::

@@ -10,7 +10,7 @@ const HomePageScope = () => {
       style={{
         paddingTop: "5em",
         paddingBottom: "5em",
-        background: "rgba(255,255,255, 0.4)",
+        // background: "rgba(255,255,255, 0.4)",
         borderRadius: "10px",
       }}
     >
@@ -22,10 +22,17 @@ const HomePageScope = () => {
         <h1 className="hero__title">
           Positioned right at the early drug discovery research phase.
         </h1>
-        <div style={{ margin: "40px" }}>
+        <div
+          style={{
+            margin: "40px",
+            background: "rgba(255,255,255, 0.4)",
+            padding: "1em",
+            borderRadius: "20px",
+          }}
+        >
           <img src="/daikon/img/Landing/Scope.png" />
         </div>
-        <div style={{padding:"2em"}}>
+        <div style={{ padding: "2em" }}>
           <div className="row">
             <div className="text--left">
               DAIKON is a comprehensive drug discovery management tool designed
