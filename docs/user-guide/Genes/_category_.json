@@ -1,8 +1,8 @@
 {
   "label": "Genes",
-  "position": 2,
   "link": {
-    "type": "generated-index",
-    "description": "5 minutes to learn the most important Docusaurus concepts."
-  }
+    "description": "Genes play a critical role in drug discovery and development as they are the basic units of heredity that code for the production of proteins, which are key targets for many therapeutic drugs.",
+    "type": "generated-index"
+  },
+  "position": 2
 }
