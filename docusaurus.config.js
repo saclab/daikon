@@ -64,14 +64,11 @@ const config = {
           src: 'img/logo-200.png',
         },
         items: [
-          {
-            type: 'doc',
-            docId: 'intro',
-            position: 'left',
-            label: 'Docs',
-          },
-          {to: '/blog', label: 'Blog', position: 'left'},
-          {to: '/blog', label: 'Community', position: 'left'},
+          {to: 'docs/intro', label: 'Know', position: 'left'},
+          {to: 'docs/user-guide/Introduction', label: 'Learn', position: 'left'},
+          {to: 'docs/category/deployment-manual', label: 'Use', position: 'left'},
+          {to: 'docs/developers-guide/Introduction', label: 'Contribute', position: 'left'},
+          
           {
             href: 'https://github.com/saclab/daikon-core-server',
             label: 'GH Core-Server',
@@ -129,12 +126,8 @@ const config = {
             title: 'More',
             items: [
               {
-                label: 'Blog',
-                to: '/blog',
-              },
-              {
                 label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus',
+                href: 'https://github.com/saclab',
               },
             ],
           },
