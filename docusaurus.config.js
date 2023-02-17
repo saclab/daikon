@@ -1,54 +1,55 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
-const lightCodeTheme = require('prism-react-renderer/themes/github');
-const darkCodeTheme = require('prism-react-renderer/themes/dracula');
+const lightCodeTheme = require("prism-react-renderer/themes/github");
+const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Daikon',
-  tagline: 'Data Acquisition, Integration, and Knowledge capture applicatiON for target-based drug discovery',
-  url: 'https://your-docusaurus-test-site.com',
-  baseUrl: '/daikon/',
-  onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
-  favicon: 'img/favicon.ico',
+  title: "Daikon",
+  tagline:
+    "Data Acquisition, Integration, and Knowledge capture applicatiON for target-based drug discovery",
+  url: "https://your-docusaurus-test-site.com",
+  baseUrl: "/daikon/",
+  onBrokenLinks: "throw",
+  onBrokenMarkdownLinks: "warn",
+  favicon: "img/favicon.ico",
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'saclab', // Usually your GitHub org/user name.
-  projectName: 'daikon', // Usually your repo name.
+  organizationName: "saclab", // Usually your GitHub org/user name.
+  projectName: "daikon", // Usually your repo name.
   trailingSlash: false,
 
   // Even if you don't use internalization, you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want
   // to replace "en" with "zh-Hans".
   i18n: {
-    defaultLocale: 'en',
-    locales: ['en'],
+    defaultLocale: "en",
+    locales: ["en"],
   },
 
   presets: [
     [
-      'classic',
+      "classic",
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
-          sidebarPath: require.resolve('./sidebars.js'),
+          sidebarPath: require.resolve("./sidebars.js"),
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+            "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
         },
         blog: {
           showReadingTime: true,
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+            "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
         },
         theme: {
-          customCss: require.resolve('./src/css/custom.css'),
+          customCss: require.resolve("./src/css/custom.css"),
         },
       }),
     ],
@@ -58,76 +59,88 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: 'DAIKON',
+        title: "DAIKON",
         logo: {
-          alt: 'Daikon Logo',
-          src: 'img/logo-200.png',
+          alt: "Daikon Logo",
+          src: "img/logo-200.png",
         },
         items: [
-          {to: 'docs/intro', label: 'Know', position: 'left'},
-          {to: 'docs/user-guide/Introduction', label: 'Learn', position: 'left'},
-          {to: 'docs/category/deployment-manual', label: 'Use', position: 'left'},
-          {to: 'docs/developers-guide/Introduction', label: 'Contribute', position: 'left'},
-          
+          { to: "docs/intro", label: "Know", position: "left" },
           {
-            href: 'https://github.com/saclab/daikon-core-server',
-            label: 'GH Core-Server',
-            position: 'right',
+            to: "docs/user-guide/Introduction",
+            label: "Learn",
+            position: "left",
           },
           {
-            href: 'https://github.com/saclab/daikon-core-webapp',
-            label: 'GH Core-WebApp',
-            position: 'right',
+            to: "docs/category/deployment-manual",
+            label: "Use",
+            position: "left",
+          },
+          {
+            to: "docs/developers-guide/Introduction",
+            label: "Contribute",
+            position: "left",
+          },
+
+          {
+            href: "https://github.com/saclab/daikon-core-server",
+            label: "GH Core-Server",
+            position: "right",
+          },
+          {
+            href: "https://github.com/saclab/daikon-core-webapp",
+            label: "GH Core-WebApp",
+            position: "right",
           },
         ],
       },
       footer: {
-        style: 'dark',
+        style: "dark",
         links: [
           {
-            title: 'Docs',
+            title: "Docs",
             items: [
               {
-                label: 'Deployment Manual',
-                to: '/docs/category/deployment-manual',
+                label: "Deployment Manual",
+                to: "/docs/category/deployment-manual",
               },
               {
-                label: 'Developers Guide',
-                to: '/docs/category/developers-guide',
+                label: "Developers Guide",
+                to: "/docs/category/developers-guide",
               },
               {
-                label: 'Admin Guide',
-                to: '/docs/category/admin-guide',
+                label: "Admin Guide",
+                to: "/docs/category/admin-guide",
               },
               {
-                label: 'User Guide',
-                to: '/docs/category/admin-guide',
+                label: "User Guide",
+                to: "/docs/category/admin-guide",
               },
               {
-                label: 'API reference',
-                to: '/docs/category/api-reference',
+                label: "API reference",
+                to: "/docs/category/api-reference",
               },
             ],
           },
           {
-            title: 'Community',
+            title: "Community",
             items: [
               {
-                label: 'Sacchettini Laboratory',
-                href: 'https://saclab.biobio.tamu.edu/saclab/',
+                label: "Sacchettini Laboratory",
+                href: "https://saclab.biobio.tamu.edu/saclab/",
               },
               {
-                label: 'TB Drug Accelerator',
-                href: 'https://www.tbdrugaccelerator.org/',
+                label: "TB Drug Accelerator",
+                href: "https://www.tbdrugaccelerator.org/",
               },
             ],
           },
           {
-            title: 'More',
+            title: "More",
             items: [
               {
-                label: 'GitHub',
-                href: 'https://github.com/saclab',
+                label: "GitHub",
+                href: "https://github.com/saclab",
               },
             ],
           },
@@ -138,7 +151,19 @@ const config = {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
       },
+      markdown: {
+        mermaid: true,
+      },
     }),
 };
 
 module.exports = config;
+// module.exports = {
+//   ...config,
+
+//   themeConfig: {
+//     mermaid: {
+//       theme: {light: 'neutral', dark: 'forest'},
+//     },
+//   },
+// };
