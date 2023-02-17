@@ -5,49 +5,56 @@ import styles from "./styles.module.css";
 const FeatureList = [
   {
     title: "Glue Molecular DBs & PMTs.",
-    Svg: require("@site/static/img/undraw_docusaurus_mountain.svg").default,
+    imageLoc: "img/glue.png",
     description: (
       <>
-        View the schematic activities involved in the TB drug discovery process.
+        Streamline your drug discovery process by bridging gaps between
+        molecular databases and project management tools.
       </>
     ),
   },
   {
     title: "Retain knowledge as compounds evolve.",
-    Svg: require("@site/static/img/undraw_docusaurus_tree.svg").default,
-    description: <>Learn about the databases & APIs used in DAIKON.</>,
+    imageLoc: "img/knowledge.png",
+    description: (
+      <>
+        Don't lose valuable insights as your compounds evolve - retain your
+        knowledge every step of the way..
+      </>
+    ),
   },
   {
     title: "Actively developed.*",
-    Svg: require("@site/static/img/undraw_docusaurus_react.svg").default,
+    imageLoc: "img/active.png",
     description: (
       <>
-        Know more about the ongoing developments and future plans to incorporate more discovery
-        pipelines.
+        Our project is constantly evolving with new features and updates to
+        provide the best user experience possible.
       </>
     ),
   },
 ];
 
-function Feature({ Svg, title, description }) {
+function Feature({ imageLoc, title, description }) {
   return (
     <div className={clsx("col col--4")}>
       <div className="text--center">
-        <Svg className={styles.featureSvg} role="img" />
+        <img src={imageLoc} role="img" width="200" />
       </div>
-      <div className="text--center padding-horiz--md"
-      // style={{
-      //   background: "rgba(255,255,255, 0.4)",
-      //   minHeight: "140px",
-      //   borderRadius: "4px",
-      //   paddingTop: "25px"
+      <div
+        className="text--center padding-horiz--md"
+        // style={{
+        //   background: "rgba(255,255,255, 0.4)",
+        //   minHeight: "140px",
+        //   borderRadius: "4px",
+        //   paddingTop: "25px"
 
-      // }}
+        // }}
       >
         <h3>{title}</h3>
         <p> {description}</p>
       </div>
-    </div >
+    </div>
   );
 }
 
@@ -57,7 +64,6 @@ export default function HomepageFeatures() {
       <div className={"container"}>
         <div
         // className={styles.boxEnclose}
-
         >
           <div className="row">
             {FeatureList.map((props, idx) => (
