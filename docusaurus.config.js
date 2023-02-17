@@ -108,7 +108,7 @@ const config = {
               },
               {
                 label: 'API reference',
-                to: '/docs/category/api',
+                to: '/docs/category/api-reference',
               },
             ],
           },
