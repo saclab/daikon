@@ -81,6 +81,11 @@ const config = {
             label: "Contribute",
             position: "left",
           },
+          {
+            to: "docs/category/video-guides",
+            label: "Videos",
+            position: "right",
+          },
 
           {
             href: "https://github.com/saclab/daikon-core-server",
