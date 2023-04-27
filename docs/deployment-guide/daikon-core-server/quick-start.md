@@ -11,16 +11,20 @@ The env file should contain the following params.
 
 ```bash
 AZURE_VAILD_AUDIENCE=api://<azure audience id>
-AZURE_AUTHORITY=https://login.microsoftonline.com/<authority id>
+SSO_AUTHORITY=https://login.microsoftonline.com/<authority id>
 PGPASSWORD=<?>
 PGPGUSER=tpt_user
 PGSQL_CONNECTION_STRING=Host=project_db;Port=5432;Database=tpt_db;
 CORS_ORIGINS=http://localhost:3000
 ```
 
-User authorization is done using an AD/SSO.  
-Out of the box, the server is configured to use Microsoft Azure AD and the app needs to be registerd with the provider.
-
+User authorization is done using an AD/SSO. 
+:::tip Identity Provider
+Out of the box, the server is configured to use Microsoft Azure AD and the app needs to be registered with the provider.
+Alternatively, Keycloak can be used as an identity provider. docker-compose-dev.yml includes a keycloak server implementation.
+Please follow the detailed guide to use kyecloak.
+file
+:::
 To register an application with Azure AD and create a service principal sign in to your Azure Account through the Azure portal.  
 Select Azure Active Directory > Select App registrations > Select New registration.
 Name the application, for example "example-app". Select a supported account type, which determines who can use the application. Under Redirect URI, select Web for the type of application you want to create. Enter the URI where the access token is sent to.  
