@@ -1,7 +1,6 @@
 # Creating a new HA
 
-1. To begin a new HA, click on '+ New Hit Assessment' 
-
+To begin a new HA, click on '+ New Hit Assessment' 
 
 
 <img src="/daikon/img/UserGuide/HA/NewHA.png" />

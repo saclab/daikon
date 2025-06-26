@@ -1,0 +1,2 @@
+# HA Detailed View
+
