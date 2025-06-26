@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdaikon=self.webpackChunkdaikon||[]).push([[3481],{7394:a=>{a.exports=JSON.parse('{"label":"docusaurus","permalink":"/daikon/blog/tags/docusaurus","allTagsPath":"/daikon/blog/tags","count":4}')}}]);
