@@ -1,0 +1,39 @@
+# HA module structure
+
+The HA module in DAIKON is organized into three main tabs
+
+<br />
+<img src="/daikon/img/UserGuide/HA/HAModules.png" />
+<br />
+<br />
+<b>Note:
+All chemical structures shown in this guide are publicly available and used solely for demonstration and instructional purposes within the user guide.  
+They do not represent proprietary or confidential compounds.</b>
+
+<h3>Overview</h3>
+This is the default landing page when entering the Hit Assessment module. It provides a high-level summary of all HAs categorized by their current status:
+
+  - Ready for HA – Hit series identified as suitable to begin assessment
+  - Active – Ongoing hit assessments currently being evaluated
+  - Inactive – Hit Assessments that have been deprioritized due to specific issues such as incorrect mass-to-charge ratio (m/z), known structural liabilities, failure to complete the assessment process or lack of confirmed activity
+  - Complete – HAs that have been finalized with a decision or conclusion
+
+Each status card provides a quick summary of key information:
+- Project Name - Name of the associated drug discovery project
+- Primary Organization - The lead institution or group responsible
+- Associated Target Name - If the HA is phenotypic, this field will display "Unknown"
+- Primary Structure – The representative compound or hit structure
+- Last Status Modified Date – Timestamp of the most recent status update
+
+This view offers quick visibility into the overall HA portfolio and serves as a starting point for initiating or resuming assessments.
+
+
+<h3>Paused HA</h3> 
+This section lists all HAs that have been paused. This helps track deprioritized efforts or deferred assessments for future review.
+
+<h3>All HA Projects</h3>
+
+This view displays a full list of all HAs, past and present, regardless of status. 
+Each entry typically includes Project name, Primary organization, Status. 
+
+

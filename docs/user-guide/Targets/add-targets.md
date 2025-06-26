@@ -1,0 +1,31 @@
+# Add target
+
+To register a new target in DAIKON, the Target Promotion Questionnaire must be completed. It is a structured tool to evaluate and document the rationale for advancing a gene (protein) or a set of genes (protein complex) as a potential therapeutic target.
+
+
+1. Click on  **"Add Target"**
+<br />
+<img src="/daikon/img/UserGuide/Targets/AddTarget.png" />
+<br />
+<br />
+
+2. The Target Promotion Questionnaire captures evidence across multiple domains and each section consists of targeted questions designed to support a data-driven decision-making process.
+Each question within the questionnaire typically includes:
+- A specific question relevant to the target's therapeutic potential
+- A set of predefined answers representing different levels of evidence or understanding
+
+<br />
+<img src="/daikon/img/UserGuide/Targets/TargetPromotionQuestionnaire.png" />
+<br />
+<br />
+3. Submission and Review :
+Once the questionnaire is completed, an internal review process assesses the evidence and the target is promoted for within DAIKON.
+<br />
+<br />
+
+4.After a target has been approved, it appears in the Targets table. This table provides a consolidated view of all proposed targets and their key attributes, enabling quick comparison. 
+- The target table includes information such as associated Genes, and some evidence-based scores
+(a set of scores derived from the questionnaire responses or other curated data sources). 
+- The table supports sorting and filtering functionalities to help users identify high-priority entries or locate specific targets.
+- In addition, all targets are plotted in an interactive visualization graph, that offers a high-level overview of all targets, and helps identify promising candidates across the portfolio..
+

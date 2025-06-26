@@ -1,7 +1,7 @@
 {
   "label": "Targets",
   "link": {
-    "description": "Genes play a critical role in drug discovery and development as they are the basic units of heredity that code for the production of proteins, which are key targets for many therapeutic drugs.",
+    "description": "Targets are specific biological molecules, often proteins, whose activity is believed to be directly involved in a disease process. These targets are identified and studied to understand their role in the disease, making them focal points for the development of drugs designed to modulate their function and achieve therapeutic effects.",
     "type": "generated-index"
   },
   "position": 3
