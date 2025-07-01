@@ -1,26 +1,27 @@
-# Add a new topic in discussion board
+# Add a new topic in discussion thread
 
-Each target is labeled with the discussion thread functionality, to increase user involvement and team collaboration. This thread is common to all stages, and will reflect all the ideas and topics being discussed from Genes to Post-Portfolios.
-  
+<h4>Starting a New Discussion</h4>
+The Discussion Thread is shared across all stages, and can be accessed for any target within the pipeline. 
+To create a new entry:
 
-1. To start a discussion, go the respective stage, and click on **"Discussion"**
-<br />
-
-<img src="/daikon/img/UserGuide/Discussion/DiscussionOption.png" />
+- Select + New Discussion
 <br />
 <br />
-
-2. Click on **"Add a New Topic"**
-
-
-<img src="/daikon/img/UserGuide/Discussion/AddNewTopic.png" width="200" />
-<br />
-
-
-3.  Provide a short summary of the topic in the form with the detailed description below. Click **"Post"**
-<br />
-
-<img src="/daikon/img/UserGuide/Discussion/AddNewTopicForm.png" />
+<img src="/daikon/img/UserGuide/Targets/DiscussionThread.png" />
 <br />
 <br />
+
+
+- Click on Add, this opens a discussion widget
+- The following fields can be filled in:
+    - Topic – A brief title for the discussion point
+    - Description – Detailed notes, context, or questions
+    - Tags – Optional labels to categorize the discussion
+    - Mention – Use @ to tag other users or stakeholders for input
+
+<img src="/daikon/img/UserGuide/Targets/AddDiscussion.png" />
+<br />
+<br />
+Once submitted, the new discussion appears chronologically in the thread and can be revisited or updated as needed.
+
 
