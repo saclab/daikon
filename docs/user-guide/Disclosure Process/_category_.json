@@ -1,0 +1,8 @@
+{
+  "label": "Disclosure Process",
+  "position": 8,
+  "link": {
+    "type": "generated-index",
+    "description": "When the structure of a previously undisclosed compound becomes available, DAIKON supports two disclosure methods: through the MolecuLogix Disclose interface or directly from any location referencing the compound within the app, such as the HA Detailed View, Screen Hits, or Compound Evolution."
+  }
+}
