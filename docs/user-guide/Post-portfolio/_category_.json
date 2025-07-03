@@ -1,8 +1,8 @@
 {
-  "label": "Post portfolio",
+  "label": "Post-Portfolio",
   "position": 7,
   "link": {
     "type": "generated-index",
-    "description": "Post portfolio."
+    "description": "Post-Portfolio refers to the clinical development phase of a drug discovery project that follows candidate selection. Once a compound has progressed through H2L, LO, and SP, it enters the post-portfolio phase, which includes: IND (Investigational New Drug application) and P1 (Phase 1 clinical trial)"
   }
 }

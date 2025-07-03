@@ -3,6 +3,6 @@
   "position": 6,
   "link": {
     "type": "generated-index",
-    "description": "Portfolio."
+    "description": "The Portfolio component in DAIKON functions as a central organizational and visualization layer for tracking the progression of drug discovery projects from hit assessment to clinical candidacy. It provides a consolidated overview of all projects that have progressed beyond early discovery, enabling program managers, scientists, and administrators to efficiently monitor timelines, priorities, and milestones across a diverse and distributed research environment."
   }
 }
