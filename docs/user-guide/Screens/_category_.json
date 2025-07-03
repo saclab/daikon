@@ -3,6 +3,6 @@
   "position": 4,
   "link": {
     "type": "generated-index",
-    "description": "Screens."
+    "description": "Screens refer to the experimental process of identifying compounds of interest through assays against a biological target or system. DAIKON stores target-based and phenotypic screening information in the Screen component. Both approaches aim to uncover starting points for drug discovery efforts, with target-based screens offering mechanistic precision and phenotypic screens capturing complex, system-level effects."
   }
 }
