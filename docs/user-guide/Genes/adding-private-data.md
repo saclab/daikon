@@ -15,6 +15,7 @@ To access the private data section of genes in Daikon, navigate to the "Private 
 - Resistance Mutations
 - Vulnerability
 - Unpublished Structural Information
+
 <img src="/daikon/img/UserGuide/Genes/Essentiality.png" style={{ margin: "1em", filter: "brightness(100%) contrast(100%)"}} />
 <img src="/daikon/img/UserGuide/Genes/Vulnerability.png" style={{ margin: "1em", filter: "brightness(100%) contrast(100%)"}}/>
 
