@@ -13,7 +13,7 @@ Genes must be imported to Daikon before using them. Genes can be sourced directl
 
 Start be selecting the ***Gene component*** either in the landing page or on the Menu bar.
 <img
-src="/daikon/img/UserGuide/Genes/landing.png"
+src="/daikon/img/UserGuide/Genes/GeneIntro.png"
 style={{ margin: "1em", filter: "brightness(100%) contrast(100%)"}}
 />
 
