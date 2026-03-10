@@ -48,25 +48,25 @@ const CAPABILITIES = [
 const AI_CAPS = [
   {
     id: "docustore", label: "DocuStore AI",
-    color: "#5d9ca6", colorDark: "#497e87", titleColor: "#ffc350",
+    color: "#5d9ca6", colorDark: "#497e87", colorLight: "#a8d8de", titleColor: "#ffc350",
     live: true,
     desc: "Extracting knowledge from unstructured research documents to accelerate insight discovery.",
   },
   {
     id: "fuse", label: "Nuisance Detection AI",
-    color: "#8a759a", colorDark: "#6b5a7e", titleColor: "#ff6b6b",
+    color: "#8a759a", colorDark: "#6b5a7e", colorLight: "#c4b3d4", titleColor: "#ff6b6b",
     live: true,
     desc: "Flagging compounds that produce misleading assay signals to eliminate false positives early.",
   },
   {
     id: "admet", label: "ADMET Prediction AI",
-    color: "#a98d7e", colorDark: "#8a7264", titleColor: "#ffc857",
+    color: "#a98d7e", colorDark: "#8a7264", colorLight: "#d4bfb3", titleColor: "#ffc857",
     live: false,
     desc: "ADMET estimates surfaced at any pipeline stage to de-risk candidates before costly trials.",
   },
   {
     id: "protein", label: "Protein Assessment AI",
-    color: "#5a72a5", colorDark: "#455a88", titleColor: "#50e3c2",
+    color: "#5a72a5", colorDark: "#455a88", colorLight: "#9cb0d4", titleColor: "#50e3c2",
     live: false,
     desc: "Target scoring informed by prior work and literature to prioritize the most druggable proteins.",
   },
@@ -87,7 +87,7 @@ const TRUST = [
     p: "Built on a microservices architecture — each module deploys and scales independently. Adaptable to any disease program. Includes target-based & phenotypic discovery stages.",
   },
   {
-    n: "02 · Explainability",
+    n: "02 · Advisory AI",
     h: "Human-in-the-loop.",
     p: "AI suggestions are advisory, not automated. Researchers always approve, reject, or override before anything advances to the next stage.",
   },
@@ -107,6 +107,187 @@ const CONSORTIUM_ROWS = [
   ["Pipeline coverage",      "Gene → Target → Screen → Hit → Portfolio → Post-portfolio"],
 ];
 
+
+// ── Drug Discovery Pipeline ────────────────────────────────────────────────────
+
+const DRUG_PIPE = [
+  {
+    n: '01', label: 'Target\nIdentification', color: '#38bdf8', daikon: true,
+    cycleTime: '~1–2 yr', costPct: '~3%',
+    candidates: { count: '>10,000', unit: 'targets' },
+    steps: ['Gene pool curation', 'Literature mining', 'Genomic databases'],
+    aiTag: 'Literature AI · Knowledge graph',
+  },
+  {
+    n: '02', label: 'Target\nValidation', color: '#34d399', daikon: true,
+    cycleTime: '~1.5 yr', costPct: '~3%',
+    candidates: { count: '~500', unit: 'validated' },
+    steps: ['Druggability scoring', 'Pathway analysis', 'Genetic evidence'],
+    aiTag: 'Parsnip · Target scoring AI',
+  },
+  {
+    n: '03', label: 'Compound\nScreening', color: '#a3e635', daikon: true,
+    cycleTime: '~1.5 yr', costPct: '~6%',
+    candidates: { count: '>10,000', unit: 'screened' },
+    steps: ['HTS assays', 'Phenotypic screens', 'Assay QC'],
+    aiTag: 'Screen org. · QC AI',
+  },
+  {
+    n: '04', label: 'Hit\nAssessment', color: '#fbbf24', daikon: true,
+    cycleTime: null, costPct: null,
+    candidates: { count: '~250', unit: 'hits' },
+    steps: ['Nuisance detection', 'PAINS filter', 'Hit confirmation'],
+    aiTag: 'Fuse AI · PAINS detection',
+  },
+  {
+    n: '05', label: 'Lead\nIdentification', color: '#fb923c', daikon: true,
+    cycleTime: '~1.5 yr', costPct: '~17%',
+    candidates: { count: '~50', unit: 'leads' },
+    steps: ['SAR analysis', 'ADMET profiling', 'Series selection'],
+    aiTag: 'ADMET AI · SAR insights',
+  },
+  {
+    n: '06', label: 'Lead\nOptimization', color: '#f472b6', daikon: true,
+    cycleTime: '~1.5 yr', costPct: '~17%',
+    candidates: { count: '10–20', unit: 'candidates' },
+    steps: ['IC₅₀ series', 'Selectivity profiling', 'PK/PD modelling'],
+    aiTag: 'Compound evolution · ADMET AI',
+  },
+  {
+    n: '07', label: 'Pre-clinical\nTest', color: '#c084fc', daikon: true,
+    cycleTime: '~1 yr', costPct: '~7%',
+    candidates: { count: '1–3', unit: 'candidates' },
+    steps: ['IND filing prep', 'Toxicology', 'Regulatory package'],
+    aiTag: 'DocuStore AI · Filing assist',
+  },
+  {
+    n: '08', label: 'Preclinical\nStudies (Animal)', color: '#818cf8', daikon: false,
+    cycleTime: '~1 yr', costPct: '~7%',
+    candidates: { count: '~6', unit: 'candidates' },
+    steps: ['Pharmacokinetics', 'Animal models', 'Safety studies'],
+    aiTag: null,
+  },
+  {
+    n: '09', label: 'Clinical Trials\n(Human)', color: '#f87171', daikon: false,
+    cycleTime: '~7.5 yr', costPct: '~62%',
+    candidates: { count: '~4→2', unit: 'candidates' },
+    steps: ['Phase I · II · III', 'Patient recruitment', 'Endpoint analysis'],
+    aiTag: null,
+  },
+  {
+    n: '10', label: 'Approval /\nLaunch', color: '#2dd4bf', daikon: false,
+    cycleTime: '~1.5 yr', costPct: '~5%',
+    candidates: { count: '~1', unit: 'submission' },
+    steps: ['NDA submission', 'Regulatory review', 'Label approval'],
+    aiTag: null,
+  },
+  {
+    n: '11', label: 'Post-market\nSurveillance', color: '#4ade80', daikon: false,
+    cycleTime: null, costPct: null,
+    candidates: { count: '1', unit: 'new drug' },
+    steps: ['Commercial launch', 'Post-market monitoring'],
+    aiTag: null,
+  },
+];
+
+const DAIKON_COUNT = DRUG_PIPE.filter(s => s.daikon).length;
+const TOTAL_COUNT  = DRUG_PIPE.length;
+
+function DrugPipelineSection() {
+  const [active, setActive]   = useState(null);
+  const [inView, setInView]   = useState(false);
+  const groupRef              = useRef(null);
+
+  const toggle = (n) => setActive(prev => prev === n ? null : n);
+
+  useEffect(() => {
+    const el = groupRef.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setInView(true); obs.disconnect(); } },
+      { threshold: 0.25 }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+
+  const renderCard = (stage, dim) => (
+    <div
+      key={stage.n}
+      className={clsx(styles.dpStage, dim && styles.dpStageDim, active === stage.n && styles.dpStageActive)}
+      style={{ '--sc': stage.color }}
+      onClick={() => toggle(stage.n)}
+    >
+      <div className={styles.dpBar} />
+      <div className={styles.dpCardHead}>
+        <span className={styles.dpN}>{stage.n}</span>
+        <span
+          className={clsx(styles.dpDot, stage.daikon ? styles.dpDotSolid : styles.dpDotOpen)}
+          style={stage.daikon ? { background: stage.color } : {}}
+        />
+      </div>
+      <div className={styles.dpLabel}>{stage.label}</div>
+      <ul className={styles.dpSteps}>
+        {stage.steps.map((s, j) => <li key={j} className={styles.dpStep}>{s}</li>)}
+      </ul>
+      {stage.aiTag && <div className={styles.dpAiTag}>{stage.aiTag}</div>}
+    </div>
+  );
+
+  return (
+    <section className={styles.dpSec} id="scope">
+
+      {/* Header */}
+      <div className={styles.dpHead}>
+        <div className={styles.sEyeLight}>Pipeline Scope</div>
+        <h2 className={styles.dpH}>
+          Scope of <em className={styles.dpHSubmerge}>DAIKON</em>
+        </h2>
+        <p className={styles.dpSubhead}>
+          Covers the spectrum from target identification through pre-clinical development in early drug discovery.
+        </p>
+      </div>
+
+      {/* Cards */}
+      <div className={styles.dpScroll}>
+        <div className={styles.dpInner}>
+          <div className={styles.dpStages}>
+
+            {/* DAIKON group — animated scope frame */}
+            <div ref={groupRef} className={styles.dpDaikonGroup}>
+              <div className={styles.dpScopeFrame} aria-hidden="true">
+                <svg
+                  className={styles.dpScopeSvg}
+                  viewBox="0 0 100 100"
+                  preserveAspectRatio="none"
+                >
+                  {/* Faint full border — always visible */}
+                  <rect x="0.75" y="0.75" width="98.5" height="98.5"
+                    fill="none"
+                    stroke="rgba(34,211,238,0.2)"
+                    strokeWidth="1"
+                    vectorEffect="non-scaling-stroke"
+                  />
+                </svg>
+                {inView && (
+                  <div className={styles.dpFrameLabel}>SCOPE OF DAIKON</div>
+                )}
+              </div>
+              {DRUG_PIPE.filter(s => s.daikon).map(s => renderCard(s, false))}
+            </div>
+
+            {/* Outside-scope stages */}
+            {DRUG_PIPE.filter(s => !s.daikon).map(s => renderCard(s, true))}
+
+          </div>
+        </div>
+      </div>
+
+
+
+    </section>
+  );
+}
 
 // ── Scroll Pipeline Data ───────────────────────────────────────────────────────
 
@@ -485,7 +666,7 @@ function Hero() {
             </p>
             <div className={styles.heroBtns}>
               <Link to="/docs/category/deployment-manual" className={styles.btnPrimary}>
-                Deploy for free
+                Deploy
               </Link>
               <Link to="/docs/intro" className={styles.btnGhost}>
                 Read the docs
@@ -1033,15 +1214,32 @@ function AISection() {
           {/* Left — circle */}
           <div className={styles.aiLeft}>
             <div
-              className={styles.aiCircleWrap}
-              style={{
-                background: `radial-gradient(circle at 45% 40%, ${cap.color}, ${cap.colorDark} 85%)`,
-                boxShadow: `inset 0 -20px 40px -10px rgba(0,0,0,0.2), 0 25px 50px -15px rgba(0,0,0,0.4), 0 0 0 1px ${cap.colorDark}`,
-              }}
+              className={styles.aiCircleOuter}
+              style={{ borderColor: `${cap.colorLight}60`, background: cap.colorLight, transition: 'background 0.7s ease, border-color 0.7s ease' }}
             >
-              <div key={active} className={styles.aiSlideContent}>
-                <div className={styles.aiCircleViz}>
-                  {renderChart(cap.id)}
+              {/* Rotating dashed ring */}
+              <svg className={styles.aiRingRotate} viewBox="0 0 420 420">
+                <circle
+                  cx="210" cy="210" r="206"
+                  fill="none"
+                  stroke={cap.colorLight}
+                  strokeWidth="1.5"
+                  strokeDasharray="18 160 36 160"
+                  opacity="0.8"
+                />
+              </svg>
+
+              <div
+                className={styles.aiCircleWrap}
+                style={{
+                  background: `radial-gradient(circle at 45% 40%, ${cap.color}, ${cap.colorDark} 85%)`,
+                  boxShadow: `inset 0 -20px 40px -10px rgba(0,0,0,0.2), 0 25px 50px -15px rgba(0,0,0,0.4), 0 0 0 1px ${cap.colorDark}`,
+                }}
+              >
+                <div key={active} className={styles.aiSlideContent}>
+                  <div className={styles.aiCircleViz}>
+                    {renderChart(cap.id)}
+                  </div>
                 </div>
               </div>
             </div>
@@ -1059,12 +1257,18 @@ function AISection() {
 
               {/* Live / coming soon badge */}
               {cap.live
-                ? <span className={styles.aiLiveBadge} style={{ color: cap.titleColor, borderColor: `${cap.titleColor}60` }}>● ACTIVE</span>
-                : <span className={styles.aiComingSoon} style={{ color: cap.titleColor }}>coming soon</span>
+                ? <span className={styles.aiLiveBadge} style={{ color: cap.colorDark, borderColor: `${cap.titleColor}80`, backgroundColor: `${cap.titleColor}25` }}>● ACTIVE</span>
+                : <span className={styles.aiComingSoon} style={{ color: cap.colorDark, borderColor: `${cap.colorLight}90`, backgroundColor: `${cap.colorLight}30` }}>coming soon</span>
               }
 
               {/* Description */}
-              <p className={styles.aiDesc}>{cap.desc}</p>
+              <p
+                className={styles.aiDesc}
+                style={{
+                  borderLeftColor: cap.colorLight,
+                  backgroundColor: `${cap.colorLight}18`,
+                }}
+              >{cap.desc}</p>
 
             </div>
 
@@ -1197,7 +1401,7 @@ function ConsortiumSection() {
         <div className={styles.cInner}>
           <div className={styles.cBig}>
             25+
-            <span>Organizations{"\n"}in active use</span>
+            <span>Organizations in active use</span>
           </div>
           <div className={styles.cRows}>
             {CONSORTIUM_ROWS.map(([k, v], i) => (
@@ -1217,7 +1421,7 @@ function ConsortiumSection() {
               Get Started on GitHub
             </a>
             <p className={styles.cNote}>
-              Open source{"\n"}For academic and research programs.
+              Open source. For academic and research programs.
             </p>
           </div>
         </div>
@@ -1266,6 +1470,7 @@ export default function Home() {
       <Hero />
       <MoleculeSection />
       <AISection />
+      <DrugPipelineSection />
       {/* <CapabilitiesSection /> */}
       {/* <FuseSection /> */}
       <TrustSection />
