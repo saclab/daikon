@@ -1,43 +1,93 @@
-/**
- * Any CSS included here will be global. The classic template
- * bundles Infima by default. Infima is a CSS framework designed to
- * work well for content-centric websites.
- */
+/* ── FONTS ───────────────────────────────────────────────────────────────────── */
+/* Helvetica Neue (system) · Inter · JetBrains Mono */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap');
 
-/* You can override the default Infima variables here. */
-.root {
-  font-family: 'IBM Plex Sans', sans-serif;
+/* ── GLOBAL ──────────────────────────────────────────────────────────────────── */
+
+*, *::before, *::after {
+  box-sizing: border-box;
 }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
 body {
-  margin: 0;
-  font-family: 'IBM Plex Sans', sans-serif;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
   font-weight: 300;
 }
 
+/* ── DOCUSAURUS COLOR TOKENS (light mode) ──────────────────────────────────── */
 :root {
-  --ifm-color-primary: #3d8fce;
-  --ifm-color-primary-dark: #1c80cf;
-  --ifm-color-primary-darker: #1769aa;
-  --ifm-color-primary-darkest: #0d3c61;
-  --ifm-color-primary-light: #4baaf5;
-  --ifm-color-primary-lighter: #75bef8;
-  --ifm-color-primary-lightest: #a0d2fa;
+  /* Primary = DAIKON steel teal (matches DAIKON UI header bars) */
+  --ifm-color-primary:          #4E8FA5;
+  --ifm-color-primary-dark:     #3A7390;
+  --ifm-color-primary-darker:   #2F6580;
+  --ifm-color-primary-darkest:  #1C4A60;
+  --ifm-color-primary-light:    #62A3BA;
+  --ifm-color-primary-lighter:  #78B5C8;
+  --ifm-color-primary-lightest: #A0CDD9;
+
+  --ifm-font-size-base: 17px;
   --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --ifm-font-family-base: 'Inter', system-ui, sans-serif;
+  --ifm-heading-font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --ifm-font-weight-base: 300;
+
+  --docusaurus-highlighted-code-line-bg: rgba(78, 143, 165, 0.1);
+
+  --ifm-navbar-background-color: rgba(255, 255, 255, 0.95);
+  --ifm-navbar-shadow: 0 1px 20px rgba(26, 42, 58, 0.07);
 }
 
-/* For readability concerns, you should choose a lighter palette in dark mode. */
+/* ── DOCUSAURUS COLOR TOKENS (dark mode) ───────────────────────────────────── */
 [data-theme='dark'] {
-  --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: #21af90;
-  --ifm-color-primary-darker: #1fa588;
-  --ifm-color-primary-darkest: #1a8870;
-  --ifm-color-primary-light: #29d5b0;
-  --ifm-color-primary-lighter: #32d8b4;
-  --ifm-color-primary-lightest: #4fddbf;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  --ifm-color-primary:          #62A3BA;
+  --ifm-color-primary-dark:     #4E8FA5;
+  --ifm-color-primary-darker:   #3A7390;
+  --ifm-color-primary-darkest:  #2F6580;
+  --ifm-color-primary-light:    #78B5C8;
+  --ifm-color-primary-lighter:  #90C4D4;
+  --ifm-color-primary-lightest: #A0CDD9;
+
+  --docusaurus-highlighted-code-line-bg: rgba(78, 143, 165, 0.15);
 }
 
-.diagonal-box {
-  transform: skewY(-6deg);
+/* ── NAVBAR ──────────────────────────────────────────────────────────────────── */
+
+.navbar {
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(14, 30, 56, 0.08);
+  height: 60px;
+}
+
+.navbar__title {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 1.28rem;
+  font-weight: 600;
+  letter-spacing: .005em;
+}
+
+.navbar__link {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .67rem;
+  font-weight: 400;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+}
+
+/* ── DOCS & BLOG TYPOGRAPHY ──────────────────────────────────────────────────── */
+
+article h1, article h2, article h3 {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 600;
+  letter-spacing: -.01em;
+}
+
+/* ── HOMEPAGE: remove main-wrapper top margin ─────────────────────────────── */
+.main-wrapper > div > div {
+  margin-top: 0;
 }
