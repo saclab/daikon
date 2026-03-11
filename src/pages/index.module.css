@@ -1186,6 +1186,15 @@
   height: 7px;
   background: #A85A8F;
   border-radius: 1px;
+  transform-origin: left;
+  transform: scaleX(0);
+  animation: molUnderlineDraw 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: 0.2s;
+}
+
+@keyframes molUnderlineDraw {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
 }
 
 .molHdr .sEye {
@@ -1222,67 +1231,173 @@
   pointer-events: none;
 }
 
+@keyframes molDraw {
+  0%   { stroke-dashoffset: 350; opacity: 0; }
+  8%   { opacity: 1; }
+  100% { stroke-dashoffset: 0;   opacity: 1; }
+}
+
+.molLine {
+  stroke-dasharray: 350;
+  stroke-dashoffset: 350;
+}
+
+.molInView .molLine {
+  animation: molDraw 0.8s ease-out forwards;
+}
+
 .molCenter {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 2;
-  line-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  mix-blend-mode: multiply;
+}
+
+.molDiagram:hover .molCenter {
+  transform: translate(-50%, -50%) scale(1.05);
+}
+
+.molImageWrap {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.7s ease-out, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.molInView .molImageWrap {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes molFloat {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-7px); }
+}
+
+@keyframes molOvalDraw {
+  from { stroke-dashoffset: 310; }
+  to   { stroke-dashoffset: 0; }
+}
+
+.molOval {
+  stroke-dasharray: 310;
+  stroke-dashoffset: 310;
+}
+
+.molInView .molOval {
+  animation: molOvalDraw 0.65s ease-out forwards;
+  animation-delay: 1.4s;
+}
+
+@keyframes molAnnotDraw {
+  0%   { stroke-dashoffset: 220; opacity: 0; }
+  8%   { opacity: 1; }
+  100% { stroke-dashoffset: 0;   opacity: 1; }
+}
+
+.molSketchLine {
+  stroke-dasharray: 220;
+  stroke-dashoffset: 220;
+  opacity: 0;
+}
+
+.molArrowDraw {
+  stroke-dasharray: 140;
+  stroke-dashoffset: 140;
+  opacity: 0;
+}
+
+.molInView .molSketchLine {
+  animation: molAnnotDraw 0.5s ease-out forwards;
+}
+
+.molInView .molArrowDraw {
+  animation: molAnnotDraw 0.5s ease-out forwards;
+}
+
+.molAnnotText {
+  opacity: 0;
+}
+
+.molInView .molAnnotText {
+  animation: molCapFadeIn 0.4s ease-out forwards;
+}
+
+.molImg {
+  width: 300px;
+  height: auto;
+  display: block;
+}
+
+@keyframes molCapFadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 .molCap {
   position: absolute;
   z-index: 1;
+  opacity: 0;
 }
 
+.molInView .molCap {
+  animation: molCapFadeIn 0.5s ease-out forwards;
+}
+
+/* Diagonal corner positions — aligned to leader line terminals */
 .molCapTop {
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  text-align: center;
-  width: 210px;
-}
-
-.molCapBottom {
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  text-align: center;
-  width: 210px;
-}
-
-.molCapLeft {
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  text-align: right;
-  width: 185px;
+  top: 40px;
+  right: 8px;
+  text-align: left;
+  width: 182px;
+  padding-left: 22px;
 }
 
 .molCapRight {
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  top: 252px;
+  right: 8px;
   text-align: left;
-  width: 185px;
+  width: 182px;
+  padding-left: 22px;
+}
+
+.molCapBottom {
+  top: 378px;
+  left: 8px;
+  text-align: right;
+  width: 182px;
+  padding-right: 22px;
+}
+
+.molCapLeft {
+  top: 40px;
+  left: 8px;
+  text-align: right;
+  width: 182px;
+  padding-right: 22px;
 }
 
 .molCapLabel {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-weight: 600;
-  font-size: .88rem;
+  font-weight: 800;
+  font-size: .92rem;
+  font-style: italic;
   color: var(--ink);
   letter-spacing: -.01em;
-  margin-bottom: 6px;
+  margin-bottom: 5px;
   line-height: 1.2;
 }
 
 .molCapDesc {
-  font-size: .74rem;
+  font-size: .72rem;
   font-weight: 300;
   color: var(--mu);
-  line-height: 1.6;
+  line-height: 1.55;
 }
 
 /* ── CAPABILITIES ────────────────────────────────────────────────────────────── */

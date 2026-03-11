@@ -348,120 +348,37 @@ const PIPE_STAGES = [
 
 // ── Molecule SVG ──────────────────────────────────────────────────────────────
 // Bicyclic drug-like scaffold: benzene fused with pyrimidine-type ring
-// ViewBox 300×260 — three concentric rings encode molecule → space → system
-
-function MolSVG() {
-  // Ring A (benzene) center (128, 130), r=24, pointy-top hexagon
-  // s = r * √3/2 ≈ 20.8
-  const a = [
-    [128.0, 106.0],   // 0 top
-    [148.8, 118.0],   // 1 top-right  ← shared with Ring B
-    [148.8, 142.0],   // 2 bot-right  ← shared with Ring B
-    [128.0, 154.0],   // 3 bottom
-    [107.2, 142.0],   // 4 bot-left
-    [107.2, 118.0],   // 5 top-left
-  ];
-  // Ring B (6-membered heteroaromatic) center (169.6, 130)
-  const b = [
-    [169.6, 106.0],   // 0 top
-    [190.4, 118.0],   // 1 top-right
-    [190.4, 142.0],   // 2 bot-right  ← N atom
-    [169.6, 154.0],   // 3 bottom
-    a[2],             // 4 shared
-    a[1],             // 5 shared
-  ];
-
-  const ln = ([x1,y1], [x2,y2], k) => (
-    <line key={k} x1={x1} y1={y1} x2={x2} y2={y2}
-      stroke="#B86060" strokeWidth="1.5" strokeLinecap="round" />
-  );
-
-  const atom = (x, y, fill, label, rr = 5) => (
-    <g key={`at${x}${y}`}>
-      <circle cx={x} cy={y} r={rr} fill={fill} />
-      {label && (
-        <text x={x} y={y + 3.5} textAnchor="middle"
-          fontSize="7" fill="white"
-          fontFamily="Helvetica Neue, Helvetica, Arial, sans-serif"
-          fontWeight="600">
-          {label}
-        </text>
-      )}
-    </g>
-  );
-
-  return (
-    <svg viewBox="0 0 300 260" width="180" height="156" fill="none">
-
-      <defs>
-        <radialGradient id="molHalo" cx="50%" cy="50%" r="50%">
-          <stop offset="0%"   stopColor="#C86B6B" stopOpacity="0.18" />
-          <stop offset="60%"  stopColor="#C86B6B" stopOpacity="0.07" />
-          <stop offset="100%" stopColor="#C86B6B" stopOpacity="0" />
-        </radialGradient>
-      </defs>
-
-      {/* ── Radial halo behind molecule ── */}
-      <circle cx="149" cy="130" r="88" fill="url(#molHalo)" />
-
-      {/* ── Concentric rings: molecule → chemical space → discovery system ── */}
-      <circle cx="149" cy="130" r="126" stroke="rgba(200,107,107,0.05)" strokeWidth="1" />
-      <circle cx="149" cy="130" r="100" stroke="rgba(200,107,107,0.10)" strokeWidth="1" />
-      <circle cx="149" cy="130" r="74"  stroke="rgba(200,107,107,0.18)" strokeWidth="1" />
-
-      {/* ── Ring A bonds ── */}
-      {[0,1,2,3,4,5].map(i => ln(a[i], a[(i+1)%6], `ra${i}`))}
-
-      {/* ── Ring B bonds (skip shared a1-a2 already drawn) ── */}
-      {ln(b[5], b[0], 'rb0')}
-      {ln(b[0], b[1], 'rb1')}
-      {ln(b[1], b[2], 'rb2')}
-      {ln(b[2], b[3], 'rb3')}
-      {ln(b[3], b[4], 'rb4')}
-
-      {/* ── Aromatic inner circles ── */}
-      <circle cx="128" cy="130" r="13" stroke="rgba(200,107,107,0.45)" strokeWidth="1.1" />
-      <circle cx="169.6" cy="130" r="13" stroke="rgba(200,107,107,0.45)" strokeWidth="1.1" />
-
-      {/* ── Substituent bonds ── */}
-      {/* NH₂ at a[0] */}
-      <line x1="128" y1="106" x2="128" y2="82" stroke="#B86060" strokeWidth="1.5" strokeLinecap="round" />
-      {/* F at b[0] */}
-      <line x1="169.6" y1="106" x2="169.6" y2="82" stroke="#B86060" strokeWidth="1.5" strokeLinecap="round" />
-      {/* OH at a[4] */}
-      <line x1="107.2" y1="142" x2="85" y2="156" stroke="#B86060" strokeWidth="1.5" strokeLinecap="round" />
-
-      {/* ── Carbon atoms ── */}
-      {a.map(([x, y], i) => <circle key={`ac${i}`} cx={x} cy={y} r="3.2" fill="#8B4A4A" />)}
-      {[0,1,3].map(i => <circle key={`bc${i}`} cx={b[i][0]} cy={b[i][1]} r="3.2" fill="#8B4A4A" />)}
-
-      {/* ── Highlighted heteroatoms ── */}
-      {/* N in ring at b[2] */}
-      {atom(190.4, 142.0, '#C86B6B', 'N', 6)}
-      {/* NH₂ substituent */}
-      {atom(128.0, 76.0, '#D47A7A', 'N', 6)}
-      {/* F substituent */}
-      {atom(169.6, 76.0, '#D48888', 'F', 5.5)}
-      {/* O (OH) substituent */}
-      {atom(82.0, 162.0, '#D48888', 'O', 5.5)}
-
-    </svg>
-  );
-}
 
 // ── Molecule Section ──────────────────────────────────────────────────────────
 
 function MoleculeSection() {
   const caps = [
-    { id: 'top',    label: 'Assay activity',        desc: 'IC₅₀, MIC, and assay results linked to each compound.',          color: '#7C6BB3' },
-    { id: 'right',  label: 'Molecular properties',  desc: 'MW, TPSA, LogP, and key descriptors at every stage.',            color: '#5C6FAE' },
-    { id: 'bottom', label: 'Compound evolution',    desc: 'Track optimization history across analog and series changes.',    color: '#6FA48C' },
-    { id: 'left',   label: 'Structure-based search', desc: 'Substructure, similarity, and exact match across the registry.', color: '#3C8FA8' },
+    { id: 'top',    label: 'Assay activity',         desc: 'IC₅₀, MIC, and assay results linked to each compound.',          color: '#7C6BB3', delay: '0.4s' },
+    { id: 'right',  label: 'Molecular properties',   desc: 'MW, TPSA, LogP, and key descriptors at every stage.',            color: '#5C6FAE', delay: '0.6s' },
+    { id: 'bottom', label: 'Compound evolution',     desc: 'Track optimization history across analog and series changes.',   color: '#6FA48C', delay: '0.8s' },
+    { id: 'left',   label: 'Structure-based search', desc: 'Substructure, similarity, and exact match across the registry.', color: '#3C8FA8', delay: '1.0s' },
   ];
 
+  const [inView, setInView] = useState(false);
+  const diagramRef = useRef(null);
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setInView(true);
+      return;
+    }
+    const el = diagramRef.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setInView(true); obs.disconnect(); } },
+      { threshold: 0.2 }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+
   // Label brightening synced to SMIL pulse timing:
-  // motTop fires at 0.8s → arrives 2.0s | cycle = 10s
-  // motBottom 3.3s → 4.5s | motLeft 5.8s → 7.0s | motRight 8.3s → 9.5s
+  // motTop: 0.8s → 2.0s | motRight: 3.3s → 4.5s | motBottom: 5.8s → 7.0s | motLeft: 8.3s → 9.5s
   const [activeLabel, setActiveLabel] = useState(null);
   useEffect(() => {
     if (typeof window !== 'undefined' &&
@@ -478,9 +395,9 @@ function MoleculeSection() {
       timers.push(setTimeout(fire, delay));
     };
     schedule(2000, 'top');
-    schedule(4500, 'bottom');
-    schedule(7000, 'left');
-    schedule(9500, 'right');
+    schedule(4500, 'right');
+    schedule(7000, 'bottom');
+    schedule(9500, 'left');
     return () => timers.forEach(clearTimeout);
   }, []);
 
@@ -499,88 +416,151 @@ function MoleculeSection() {
           </p>
         </div>
 
-        <div className={styles.molDiagram}>
-          {/* SVG cross lines */}
+        <div
+          ref={diagramRef}
+          className={`${styles.molDiagram}${inView ? ' ' + styles.molInView : ''}`}
+        >
+          {/* SVG diagram */}
           <svg
             className={styles.molLines}
             viewBox="0 0 800 460"
             preserveAspectRatio="xMidYMid meet"
             aria-hidden="true"
           >
-            {/*
-              Container 800×460, center (400,230).
-              MolSVG outer ring → junction dots at ±76 from center.
-              Endpoint dots ~25px gap from cap text on all sides.
-                junction: (400,154),(400,306),(324,230),(476,230)
-                endpoint: (400,90),(400,370),(210,230),(590,230)
-              Concentric rings at r=95,145,190. Micro-labels on connector midpoints.
-            */}
+            <defs>
+              <radialGradient id="molHalo" cx="50%" cy="50%" r="50%">
+                <stop offset="0%"   stopColor="#A85A8F" stopOpacity="0.05" />
+                <stop offset="55%"  stopColor="#A85A8F" stopOpacity="0.02" />
+                <stop offset="100%" stopColor="#A85A8F" stopOpacity="0" />
+              </radialGradient>
+              {/* Pulsing glow — soft lavender */}
+              <radialGradient id="molGlow" cx="50%" cy="50%" r="50%">
+                <stop offset="0%"   stopColor="#C8B4E8" stopOpacity="0.08" />
+                <stop offset="65%"  stopColor="#C8B4E8" stopOpacity="0.02" />
+                <stop offset="100%" stopColor="#C8B4E8" stopOpacity="0" />
+              </radialGradient>
+              {/* Very subtle rough filter — editorial hand-drawn feel */}
+              <filter id="molRough" x="-10%" y="-25%" width="120%" height="150%">
+                <feTurbulence type="fractalNoise" baseFrequency="0.065" numOctaves="3" seed="7" result="noise"/>
+                <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.2" xChannelSelector="R" yChannelSelector="G"/>
+              </filter>
+              {/* Arrowhead — muted amber */}
+              <marker id="arrowAmber" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
+                <path d="M 1 1 L 6 3.5 L 1 6" stroke="rgba(190,150,55,0.80)" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+              </marker>
+              {/* Arrowhead — lavender */}
+              <marker id="arrowLavender" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
+                <path d="M 1 1 L 6 3.5 L 1 6" stroke="rgba(124,107,179,0.70)" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+              </marker>
+            </defs>
 
-            {/* ── Scientific system rings ── */}
-            <circle cx="400" cy="230" r="95"  stroke="rgba(200,107,107,0.08)" strokeWidth="0.6" fill="none" />
-            <circle cx="400" cy="230" r="145" stroke="rgba(200,107,107,0.05)" strokeWidth="0.6" fill="none" />
-            <circle cx="400" cy="230" r="190" stroke="rgba(200,107,107,0.03)" strokeWidth="0.6" fill="none" />
-
-            {/* ── Crosshair connectors — per-node accent colors ── */}
-            <line x1="400" y1="154" x2="400" y2="90"  stroke="rgba(168,90,143,0.40)" strokeWidth="1" />
-            <line x1="400" y1="306" x2="400" y2="370" stroke="rgba(168,90,143,0.40)" strokeWidth="1" />
-            <line x1="324" y1="230" x2="210" y2="230" stroke="rgba(168,90,143,0.40)" strokeWidth="1" />
-            <line x1="476" y1="230" x2="590" y2="230" stroke="rgba(168,90,143,0.40)" strokeWidth="1" />
-
-            {/* ── Endpoint dots (pulse on arrival) ── */}
-            <circle cx="400" cy="90"  r="3.5" fill="#A85A8F" fillOpacity="0.55">
-              <animate attributeName="fillOpacity" values="0.55;0.90;0.55" dur="0.9s" begin="motTop.end"    calcMode="spline" keySplines="0.4 0 0.6 1" keyTimes="0;0.35;1" />
-              <animate attributeName="r"           values="3.5;5;3.5"       dur="0.9s" begin="motTop.end"    calcMode="spline" keySplines="0.4 0 0.6 1" keyTimes="0;0.35;1" />
-            </circle>
-            <circle cx="400" cy="370" r="3.5" fill="#A85A8F" fillOpacity="0.55">
-              <animate attributeName="fillOpacity" values="0.55;0.90;0.55" dur="0.9s" begin="motBottom.end" calcMode="spline" keySplines="0.4 0 0.6 1" keyTimes="0;0.35;1" />
-              <animate attributeName="r"           values="3.5;5;3.5"       dur="0.9s" begin="motBottom.end" calcMode="spline" keySplines="0.4 0 0.6 1" keyTimes="0;0.35;1" />
-            </circle>
-            <circle cx="210" cy="230" r="3.5" fill="#A85A8F" fillOpacity="0.55">
-              <animate attributeName="fillOpacity" values="0.55;0.90;0.55" dur="0.9s" begin="motLeft.end"   calcMode="spline" keySplines="0.4 0 0.6 1" keyTimes="0;0.35;1" />
-              <animate attributeName="r"           values="3.5;5;3.5"       dur="0.9s" begin="motLeft.end"   calcMode="spline" keySplines="0.4 0 0.6 1" keyTimes="0;0.35;1" />
-            </circle>
-            <circle cx="590" cy="230" r="3.5" fill="#A85A8F" fillOpacity="0.55">
-              <animate attributeName="fillOpacity" values="0.55;0.90;0.55" dur="0.9s" begin="motRight.end"  calcMode="spline" keySplines="0.4 0 0.6 1" keyTimes="0;0.35;1" />
-              <animate attributeName="r"           values="3.5;5;3.5"       dur="0.9s" begin="motRight.end"  calcMode="spline" keySplines="0.4 0 0.6 1" keyTimes="0;0.35;1" />
+            {/* ── Soft center glow pulse ── */}
+            <circle cx="400" cy="230" r="150" fill="url(#molGlow)">
+              <animate attributeName="r"       values="132;162;132" dur="4s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.6 1;0.4 0 0.6 1" />
+              <animate attributeName="opacity" values="1;0.5;1"     dur="4s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.6 1;0.4 0 0.6 1" />
             </circle>
 
-            {/* ── Junction dots at molecule outer ring ── */}
-            {[
-              { x: 400, y: 154, c: '#A85A8F' },
-              { x: 400, y: 306, c: '#A85A8F' },
-              { x: 324, y: 230, c: '#A85A8F' },
-              { x: 476, y: 230, c: '#A85A8F' },
-            ].map(({ x, y, c }, i) => (
-              <circle key={i} cx={x} cy={y} r="2" fill={c} fillOpacity="0.45" />
-            ))}
+            {/* ── Anchor halo (very subtle) ── */}
+            <circle cx="400" cy="230" r="170" fill="url(#molHalo)" />
 
-            {/* ── Traveling pulse dots (SMIL animateMotion chain) ──
-                Cycle: top(0.8s) → +1.3s gap → bottom → +1.3s → left → +1.3s → right → +1.3s → top ...
-                Travel dur=1.2s, gap=1.3s → 4×(1.2+1.3)=10s cycle.
-                Paths are relative offsets from each junction position.       ── */}
-            <circle cx="400" cy="154" r="2.5" fill="#A85A8F" fillOpacity="0">
-              <animateMotion id="motTop"    path="M0,0 L0,-64"   dur="1.2s" begin="0.8s; motRight.end+1.3s"  calcMode="spline" keySplines="0.4 0 0.6 1" keyTimes="0;1" />
-              <animate attributeName="fillOpacity" values="0;0.55;0.45;0" keyTimes="0;0.12;0.85;1" dur="1.2s" begin="0.8s; motRight.end+1.3s" />
+            {/* ── Diagonal leader lines — draw-on animation ── */}
+            <polyline className={styles.molLine} style={{ animationDelay: '0.1s' }}
+              points="462,147 583,54 600,54" stroke="rgba(124,107,179,0.72)" strokeWidth="1.8" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+            <polyline className={styles.molLine} style={{ animationDelay: '0.3s' }}
+              points="507,256 592,264 608,264" stroke="rgba(92,111,174,0.72)" strokeWidth="1.8" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+            <polyline className={styles.molLine} style={{ animationDelay: '0.5s' }}
+              points="322,304 206,390 190,390" stroke="rgba(111,164,140,0.72)" strokeWidth="1.8" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+            <polyline className={styles.molLine} style={{ animationDelay: '0.7s' }}
+              points="337,148 208,54 192,54" stroke="rgba(60,143,168,0.72)" strokeWidth="1.8" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+
+            {/* ── Surface micro-nodes (outer ring + inner solid) ── */}
+            <g>
+              <circle cx="462" cy="147" r="8" stroke="#7C6BB3" strokeOpacity="0.28" strokeWidth="1.2" fill="none" />
+              <circle cx="462" cy="147" r="3.5" fill="#7C6BB3" fillOpacity="0.80" />
+            </g>
+            <g>
+              <circle cx="507" cy="256" r="8" stroke="#5C6FAE" strokeOpacity="0.28" strokeWidth="1.2" fill="none" />
+              <circle cx="507" cy="256" r="3.5" fill="#5C6FAE" fillOpacity="0.80" />
+            </g>
+            <g>
+              <circle cx="322" cy="304" r="8" stroke="#6FA48C" strokeOpacity="0.28" strokeWidth="1.2" fill="none" />
+              <circle cx="322" cy="304" r="3.5" fill="#6FA48C" fillOpacity="0.80" />
+            </g>
+            <g>
+              <circle cx="337" cy="148" r="8" stroke="#3C8FA8" strokeOpacity="0.28" strokeWidth="1.2" fill="none" />
+              <circle cx="337" cy="148" r="3.5" fill="#3C8FA8" fillOpacity="0.80" />
+            </g>
+
+            {/* ── Terminal micro-nodes — ambient breathe + arrival flash ── */}
+            <g>
+              <circle cx="600" cy="54" r="9" stroke="#7C6BB3" strokeOpacity="0.18" strokeWidth="1" fill="none">
+                <animate attributeName="r"            values="9;14;9"       dur="2.4s" repeatCount="indefinite" begin="0.5s" />
+                <animate attributeName="strokeOpacity" values="0.18;0;0.18" dur="2.4s" repeatCount="indefinite" begin="0.5s" />
+              </circle>
+              <circle cx="600" cy="54" r="4" fill="#7C6BB3" fillOpacity="0.70">
+                <animate attributeName="fillOpacity" values="0.70;1;0.70" dur="0.9s" begin="motTop.end"    calcMode="spline" keySplines="0.4 0 0.6 1" keyTimes="0;0.35;1" />
+                <animate attributeName="r"           values="4;6.5;4"     dur="0.9s" begin="motTop.end"    calcMode="spline" keySplines="0.4 0 0.6 1" keyTimes="0;0.35;1" />
+              </circle>
+            </g>
+            <g>
+              <circle cx="608" cy="264" r="9" stroke="#5C6FAE" strokeOpacity="0.18" strokeWidth="1" fill="none">
+                <animate attributeName="r"            values="9;14;9"       dur="2.4s" repeatCount="indefinite" begin="1.2s" />
+                <animate attributeName="strokeOpacity" values="0.18;0;0.18" dur="2.4s" repeatCount="indefinite" begin="1.2s" />
+              </circle>
+              <circle cx="608" cy="264" r="4" fill="#5C6FAE" fillOpacity="0.70">
+                <animate attributeName="fillOpacity" values="0.70;1;0.70" dur="0.9s" begin="motRight.end"  calcMode="spline" keySplines="0.4 0 0.6 1" keyTimes="0;0.35;1" />
+                <animate attributeName="r"           values="4;6.5;4"     dur="0.9s" begin="motRight.end"  calcMode="spline" keySplines="0.4 0 0.6 1" keyTimes="0;0.35;1" />
+              </circle>
+            </g>
+            <g>
+              <circle cx="190" cy="390" r="9" stroke="#6FA48C" strokeOpacity="0.18" strokeWidth="1" fill="none">
+                <animate attributeName="r"            values="9;14;9"       dur="2.4s" repeatCount="indefinite" begin="1.9s" />
+                <animate attributeName="strokeOpacity" values="0.18;0;0.18" dur="2.4s" repeatCount="indefinite" begin="1.9s" />
+              </circle>
+              <circle cx="190" cy="390" r="4" fill="#6FA48C" fillOpacity="0.70">
+                <animate attributeName="fillOpacity" values="0.70;1;0.70" dur="0.9s" begin="motBottom.end" calcMode="spline" keySplines="0.4 0 0.6 1" keyTimes="0;0.35;1" />
+                <animate attributeName="r"           values="4;6.5;4"     dur="0.9s" begin="motBottom.end" calcMode="spline" keySplines="0.4 0 0.6 1" keyTimes="0;0.35;1" />
+              </circle>
+            </g>
+            <g>
+              <circle cx="192" cy="54" r="9" stroke="#3C8FA8" strokeOpacity="0.18" strokeWidth="1" fill="none">
+                <animate attributeName="r"            values="9;14;9"       dur="2.4s" repeatCount="indefinite" begin="2.6s" />
+                <animate attributeName="strokeOpacity" values="0.18;0;0.18" dur="2.4s" repeatCount="indefinite" begin="2.6s" />
+              </circle>
+              <circle cx="192" cy="54" r="4" fill="#3C8FA8" fillOpacity="0.70">
+                <animate attributeName="fillOpacity" values="0.70;1;0.70" dur="0.9s" begin="motLeft.end"   calcMode="spline" keySplines="0.4 0 0.6 1" keyTimes="0;0.35;1" />
+                <animate attributeName="r"           values="4;6.5;4"     dur="0.9s" begin="motLeft.end"   calcMode="spline" keySplines="0.4 0 0.6 1" keyTimes="0;0.35;1" />
+              </circle>
+            </g>
+
+            {/* ── Traveling pulse dots — chain: top→right→bottom→left→top ── */}
+            <circle cx="462" cy="147" r="3.5" fill="#7C6BB3" fillOpacity="0">
+              <animateMotion id="motTop"    path="M0,0 L121,-93 L138,-93" dur="1.2s" begin="0.8s; motLeft.end+1.3s"   calcMode="linear" />
+              <animate attributeName="fillOpacity" values="0;0.85;0.65;0" keyTimes="0;0.1;0.88;1" dur="1.2s" begin="0.8s; motLeft.end+1.3s" />
             </circle>
-            <circle cx="400" cy="306" r="2.5" fill="#A85A8F" fillOpacity="0">
-              <animateMotion id="motBottom" path="M0,0 L0,64"    dur="1.2s" begin="motTop.end+1.3s"          calcMode="spline" keySplines="0.4 0 0.6 1" keyTimes="0;1" />
-              <animate attributeName="fillOpacity" values="0;0.55;0.45;0" keyTimes="0;0.12;0.85;1" dur="1.2s" begin="motTop.end+1.3s" />
+            <circle cx="507" cy="256" r="3.5" fill="#5C6FAE" fillOpacity="0">
+              <animateMotion id="motRight"  path="M0,0 L85,8 L101,8"      dur="1.2s" begin="motTop.end+1.3s"          calcMode="linear" />
+              <animate attributeName="fillOpacity" values="0;0.85;0.65;0" keyTimes="0;0.1;0.88;1" dur="1.2s" begin="motTop.end+1.3s" />
             </circle>
-            <circle cx="324" cy="230" r="2.5" fill="#A85A8F" fillOpacity="0">
-              <animateMotion id="motLeft"   path="M0,0 L-114,0"  dur="1.2s" begin="motBottom.end+1.3s"       calcMode="spline" keySplines="0.4 0 0.6 1" keyTimes="0;1" />
-              <animate attributeName="fillOpacity" values="0;0.55;0.45;0" keyTimes="0;0.12;0.85;1" dur="1.2s" begin="motBottom.end+1.3s" />
+            <circle cx="322" cy="304" r="3.5" fill="#6FA48C" fillOpacity="0">
+              <animateMotion id="motBottom" path="M0,0 L-116,86 L-132,86"  dur="1.2s" begin="motRight.end+1.3s"       calcMode="linear" />
+              <animate attributeName="fillOpacity" values="0;0.85;0.65;0" keyTimes="0;0.1;0.88;1" dur="1.2s" begin="motRight.end+1.3s" />
             </circle>
-            <circle cx="476" cy="230" r="2.5" fill="#A85A8F" fillOpacity="0">
-              <animateMotion id="motRight"  path="M0,0 L114,0"   dur="1.2s" begin="motLeft.end+1.3s"         calcMode="spline" keySplines="0.4 0 0.6 1" keyTimes="0;1" />
-              <animate attributeName="fillOpacity" values="0;0.55;0.45;0" keyTimes="0;0.12;0.85;1" dur="1.2s" begin="motLeft.end+1.3s" />
+            <circle cx="337" cy="148" r="3.5" fill="#3C8FA8" fillOpacity="0">
+              <animateMotion id="motLeft"   path="M0,0 L-129,-94 L-145,-94" dur="1.2s" begin="motBottom.end+1.3s"     calcMode="linear" />
+              <animate attributeName="fillOpacity" values="0;0.85;0.65;0" keyTimes="0;0.1;0.88;1" dur="1.2s" begin="motBottom.end+1.3s" />
             </circle>
+
+
+
 
           </svg>
 
-          {/* Central molecule */}
+          {/* Central molecule image */}
           <div className={styles.molCenter}>
-            <MolSVG />
+            <div className={styles.molImageWrap}>
+              <img src="/daikon/img/molecule.png" alt="Drug molecule structure" className={styles.molImg} />
+            </div>
           </div>
 
           {/* Caps */}
@@ -588,6 +568,7 @@ function MoleculeSection() {
             <div
               key={cap.id}
               className={`${styles.molCap} ${styles['molCap' + cap.id.charAt(0).toUpperCase() + cap.id.slice(1)]}`}
+              style={{ animationDelay: cap.delay }}
             >
               <div
                 className={styles.molCapLabel}
