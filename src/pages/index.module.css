@@ -1188,7 +1188,10 @@
   border-radius: 1px;
   transform-origin: left;
   transform: scaleX(0);
-  animation: molUnderlineDraw 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.molInView .molWord::after {
+  animation: molUnderlineDraw 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   animation-delay: 0.2s;
 }
 
@@ -1231,6 +1234,7 @@
   pointer-events: none;
 }
 
+
 @keyframes molDraw {
   0%   { stroke-dashoffset: 350; opacity: 0; }
   8%   { opacity: 1; }
@@ -1250,7 +1254,7 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, calc(-50% - 6px));
   z-index: 2;
   display: flex;
   align-items: center;
@@ -1259,9 +1263,6 @@
   mix-blend-mode: multiply;
 }
 
-.molDiagram:hover .molCenter {
-  transform: translate(-50%, -50%) scale(1.05);
-}
 
 .molImageWrap {
   opacity: 0;
@@ -1319,6 +1320,7 @@
 .molInView .molArrowDraw {
   animation: molAnnotDraw 0.5s ease-out forwards;
 }
+
 
 .molAnnotText {
   opacity: 0;
