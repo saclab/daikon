@@ -116,52 +116,52 @@ const DRUG_PIPE = [
     cycleTime: '~1–2 yr', costPct: '~3%',
     candidates: { count: '>10,000', unit: 'targets' },
     steps: ['Gene pool curation', 'Literature mining', 'Genomic databases'],
-    aiTag: 'Literature AI · Knowledge graph',
+    aiTag: 'Literature AI · Knowledge graph · DocuStore AI',
   },
   {
     n: '02', label: 'Target\nValidation', color: '#34d399', daikon: true,
     cycleTime: '~1.5 yr', costPct: '~3%',
     candidates: { count: '~500', unit: 'validated' },
     steps: ['Druggability scoring', 'Pathway analysis', 'Genetic evidence'],
-    aiTag: 'Parsnip · Target scoring AI',
+    aiTag: 'Parsnip · Target scoring AI · DocuStore AI',
   },
   {
     n: '03', label: 'Compound\nScreening', color: '#a3e635', daikon: true,
     cycleTime: '~1.5 yr', costPct: '~6%',
     candidates: { count: '>10,000', unit: 'screened' },
-    steps: ['HTS assays', 'Phenotypic screens', 'Assay QC'],
-    aiTag: 'Screen org. · QC AI',
+    steps: ['HTS assays', 'Phenotypic screens', 'Nuisance detection', 'ADMET profiling'],
+    aiTag: 'Nuisance Detection AI · ADMET AI · DocuStore AI',
   },
   {
     n: '04', label: 'Hit\nAssessment', color: '#fbbf24', daikon: true,
     cycleTime: null, costPct: null,
     candidates: { count: '~250', unit: 'hits' },
-    steps: ['Nuisance detection', 'PAINS filter', 'Hit confirmation'],
-    aiTag: 'Fuse AI · PAINS detection',
+    steps: ['Hit confirmation', 'ADMET profiling', 'Analogs'],
+    aiTag: 'ADMET AI · DocuStore AI',
   },
   {
     n: '05', label: 'Lead\nIdentification', color: '#fb923c', daikon: true,
     cycleTime: '~1.5 yr', costPct: '~17%',
     candidates: { count: '~50', unit: 'leads' },
     steps: ['SAR analysis', 'ADMET profiling', 'Series selection'],
-    aiTag: 'ADMET AI · SAR insights',
+    aiTag: 'SAR insights · DocuStore AI',
   },
   {
     n: '06', label: 'Lead\nOptimization', color: '#f472b6', daikon: true,
     cycleTime: '~1.5 yr', costPct: '~17%',
     candidates: { count: '10–20', unit: 'candidates' },
     steps: ['IC₅₀ series', 'Selectivity profiling', 'PK/PD modelling'],
-    aiTag: 'Compound evolution · ADMET AI',
+    aiTag: 'Compound evolution · ADMET AI · DocuStore AI',
   },
   {
     n: '07', label: 'Pre-clinical\nTest', color: '#c084fc', daikon: true,
     cycleTime: '~1 yr', costPct: '~7%',
     candidates: { count: '1–3', unit: 'candidates' },
     steps: ['IND filing prep', 'Toxicology', 'Regulatory package'],
-    aiTag: 'DocuStore AI · Filing assist',
+    aiTag: 'DocuStore AI',
   },
   {
-    n: '08', label: 'Preclinical\nStudies (Animal)', color: '#818cf8', daikon: false,
+    n: '08', label: 'Preclinical\nStudies (Animal)', color: '#818cf8', daikon: true,
     cycleTime: '~1 yr', costPct: '~7%',
     candidates: { count: '~6', unit: 'candidates' },
     steps: ['Pharmacokinetics', 'Animal models', 'Safety studies'],
@@ -175,17 +175,10 @@ const DRUG_PIPE = [
     aiTag: null,
   },
   {
-    n: '10', label: 'Approval /\nLaunch', color: '#2dd4bf', daikon: false,
+    n: '10', label: 'Approval /\nLaunch to Market', color: '#2dd4bf', daikon: false,
     cycleTime: '~1.5 yr', costPct: '~5%',
     candidates: { count: '~1', unit: 'submission' },
     steps: ['NDA submission', 'Regulatory review', 'Label approval'],
-    aiTag: null,
-  },
-  {
-    n: '11', label: 'Post-market\nSurveillance', color: '#4ade80', daikon: false,
-    cycleTime: null, costPct: null,
-    candidates: { count: '1', unit: 'new drug' },
-    steps: ['Commercial launch', 'Post-market monitoring'],
     aiTag: null,
   },
 ];
@@ -194,9 +187,9 @@ const DAIKON_COUNT = DRUG_PIPE.filter(s => s.daikon).length;
 const TOTAL_COUNT  = DRUG_PIPE.length;
 
 function DrugPipelineSection() {
-  const [active, setActive]   = useState(null);
-  const [inView, setInView]   = useState(false);
-  const groupRef              = useRef(null);
+  const [active, setActive] = useState(null);
+  const [inView, setInView] = useState(false);
+  const groupRef            = useRef(null);
 
   const toggle = (n) => setActive(prev => prev === n ? null : n);
 
@@ -237,9 +230,40 @@ function DrugPipelineSection() {
   return (
     <section className={styles.dpSec} id="scope">
 
+      {/* SVG filter for hand-drawn effect */}
+      <svg width="0" height="0" style={{position:'absolute',overflow:'hidden'}} aria-hidden="true">
+        <defs>
+          <filter id="dp-rough">
+            <feTurbulence type="turbulence" baseFrequency="0.032" numOctaves="4" seed="12" result="noise"/>
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="3" xChannelSelector="R" yChannelSelector="G"/>
+          </filter>
+        </defs>
+      </svg>
+
+      {/* Doodle annotation — floats in the right empty space of the section */}
+      <div className={styles.dpDoodleAnnotation} aria-hidden="true">
+        <p className={styles.dpDoodleText}>A typical drug discovery &amp; development process</p>
+        <svg className={styles.dpDoodleArrow} viewBox="0 0 80 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <marker id="doodle-arrow-head" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto-start-reverse">
+              <path d="M 0 0 L 8 4 L 0 8" stroke="rgba(255,255,255,0.55)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+            </marker>
+          </defs>
+          {/* Smooth arc bulging right, tip pointing down-left */}
+          <path
+            d="M 58 8 C 82 70, 60 140, 18 188"
+            stroke="rgba(255,255,255,0.55)"
+            strokeWidth="2"
+            strokeLinecap="round"
+            fill="none"
+            markerEnd="url(#doodle-arrow-head)"
+          />
+        </svg>
+      </div>
+
       {/* Header */}
       <div className={styles.dpHead}>
-        <div className={styles.sEyeLight}>Pipeline Scope</div>
+        <div className={styles.sEyeLight}>Drug Discovery Pipeline</div>
         <h2 className={styles.dpH}>
           Scope of <em className={styles.dpHSubmerge}>DAIKON</em>
         </h2>
@@ -251,33 +275,20 @@ function DrugPipelineSection() {
       {/* Cards */}
       <div className={styles.dpScroll}>
         <div className={styles.dpInner}>
-          <div className={styles.dpStages}>
+          <div ref={groupRef} className={styles.dpStages}>
 
-            {/* DAIKON group — animated scope frame */}
-            <div ref={groupRef} className={styles.dpDaikonGroup}>
-              <div className={styles.dpScopeFrame} aria-hidden="true">
-                <svg
-                  className={styles.dpScopeSvg}
-                  viewBox="0 0 100 100"
-                  preserveAspectRatio="none"
-                >
-                  {/* Faint full border — always visible */}
-                  <rect x="0.75" y="0.75" width="98.5" height="98.5"
-                    fill="none"
-                    stroke="rgba(34,211,238,0.2)"
-                    strokeWidth="1"
-                    vectorEffect="non-scaling-stroke"
-                  />
-                </svg>
-                {inView && (
-                  <div className={styles.dpFrameLabel}>SCOPE OF DAIKON</div>
-                )}
-              </div>
-              {DRUG_PIPE.filter(s => s.daikon).map(s => renderCard(s, false))}
+            {/* Scope frame — absolute overlay covering first 7 cards (70%) */}
+            <div className={styles.dpScopeFrame} aria-hidden="true">
+              {inView && (
+                <div className={styles.dpFrameLabel}>SCOPE OF DAIKON</div>
+              )}
             </div>
 
-            {/* Outside-scope stages */}
-            {DRUG_PIPE.filter(s => !s.daikon).map(s => renderCard(s, true))}
+            {/* Out-of-scope label — absolute overlay on right 30% */}
+            <div className={styles.dpOutLabel}>OUT OF SCOPE</div>
+
+            {/* All cards flat in one flex context */}
+            {DRUG_PIPE.map(s => renderCard(s, !s.daikon))}
 
           </div>
         </div>

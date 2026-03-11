@@ -725,11 +725,42 @@
 .dpSec {
   background: #0b1720;
   border-bottom: 1px solid rgba(255,255,255,.06);
+  position: relative;
+}
+
+/* Doodle annotation — absolutely positioned in right empty space */
+.dpDoodleAnnotation {
+  position: absolute;
+  top: 72px;
+  right: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.dpDoodleText {
+  font-family: 'Caveat', cursive;
+  font-size: 2rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.72);
+  line-height: 1.3;
+  filter: url(#dp-rough);
+  margin: 0;
+  max-width: 300px;
+}
+
+.dpDoodleArrow {
+  width: 65px;
+  height: 175px;
+  margin-left: 10px;
+  margin-top: 4px;
 }
 
 /* Header */
 .dpHead {
-  padding: 88px 64px 48px;
+  padding: 88px 64px 24px;
 }
 
 .dpH {
@@ -791,48 +822,38 @@
 
 .dpInner {
   min-width: 1280px;
-  padding: 40px 64px 0;   /* 40px top = room for label; 64px sides = breathing margin */
-}
-
-/* Stage cards grid */
-.dpStages {
-  display: flex;
-  border-top: 1px solid rgba(255,255,255,.06);
-}
-
-/* ── DAIKON group + animated scope frame ──────────────────────── */
-.dpDaikonGroup {
-  display: flex;
-  flex: 7;
+  padding: 40px 64px 40px;
   position: relative;
 }
 
-/* ── Animated scope frame (SVG-based) ─────────────────────────── */
+/* Stage cards grid — all 10 cards in one flat flex context */
+.dpStages {
+  display: flex;
+  position: relative;
+}
+
+/* Border-top only for the out-of-scope area (right 20%) — scope frame draws its own top border */
+.dpStages::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 80%;
+  right: 0;
+  height: 1px;
+  background: rgba(255,255,255,.06);
+  pointer-events: none;
+}
+
+/* ── Scope frame — absolute overlay covering left 80% (cards 01-08) ── */
 .dpScopeFrame {
   position: absolute;
-  inset: 0;
+  top: 0; bottom: 0; left: 0;
+  right: 20%;
   pointer-events: none;
   z-index: 10;
-  overflow: visible;
-}
-
-.dpScopeSvg {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  overflow: visible;
-}
-
-/* Traveling dash — infinite loop */
-.dpScopeRect {
-  filter: drop-shadow(0 0 5px rgba(34,211,238,.8));
-  animation: dpScopeTravel 5s linear infinite;
-}
-
-@keyframes dpScopeTravel {
-  from { stroke-dashoffset: 0; }
-  to   { stroke-dashoffset: -100; }
+  border: 1.5px solid rgba(34,211,238,0.45);
+  border-radius: 16px;
+  box-shadow: 0 0 18px rgba(34,211,238,0.08), inset 0 0 18px rgba(34,211,238,0.04);
 }
 
 /* Label sits on the top border line, background punches through */
@@ -862,29 +883,72 @@
 .dpStage {
   flex: 1;
   position: relative;
-  padding: 28px 20px 32px;
+  padding: 20px 16px 20px;
   border-right: 1px solid rgba(255,255,255,.06);
   cursor: pointer;
-  transition: background .2s ease;
-  min-width: 0;
+  transition: flex-grow .4s cubic-bezier(.4,0,.2,1), flex-basis .4s cubic-bezier(.4,0,.2,1), background .25s;
+  min-width: 60px;
   background: transparent;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
+/* Only the very last card has no right border */
 .dpStage:last-child { border-right: none; }
-.dpDaikonGroup > .dpStage:last-child { border-right: none; }
 
-/* Only DAIKON cards (01–07) light up on hover */
-.dpDaikonGroup .dpStage:hover {
+/* Out-of-scope label — centered in the right 30% */
+.dpOutLabel {
+  position: absolute;
+  top: -10px;
+  left: 90%;
+  transform: translateX(-50%);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .62rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.28);
+  background: #0b1720;
+  padding: 2px 20px;
+  white-space: nowrap;
+  z-index: 10;
+}
+
+/* All cards expand on hover */
+.dpStage:hover {
+  flex-grow: 4;
   background: color-mix(in srgb, var(--sc) 12%, transparent);
   box-shadow: inset 0 0 48px color-mix(in srgb, var(--sc) 8%, transparent);
 }
 
 .dpStageActive { background: rgba(255,255,255,.07) !important; }
 
-.dpStageDim { opacity: 0.28; transition: opacity .2s, background .2s; }
-.dpStageDim:hover { opacity: 0.55; background: rgba(255,255,255,.04); }
+/* Hint — mirrors hover state, driven by JS on scroll-into-view */
+.dpStageHint                  { flex-grow: 4 !important; background: color-mix(in srgb, var(--sc) 12%, transparent) !important; box-shadow: inset 0 0 48px color-mix(in srgb, var(--sc) 8%, transparent) !important; }
+.dpStageHint .dpBar           { opacity: 1 !important; height: 6px !important; }
+.dpStageHint .dpN             { color: var(--sc) !important; opacity: 0.7 !important; }
+.dpStageHint .dpLabel         { max-height: 80px !important; opacity: 1 !important; margin-bottom: 14px !important; color: #fff !important; }
+.dpStageHint .dpSteps         { max-height: 300px !important; opacity: 1 !important; }
+.dpStageHint .dpAiTag         { max-height: 80px !important; opacity: 1 !important; margin-top: 18px !important; }
+
+/* 08-10: visible but clearly secondary — still part of the pipeline */
+.dpStageDim {
+  opacity: 0.55;
+  transition: flex-grow .4s cubic-bezier(.4,0,.2,1), flex-basis .4s cubic-bezier(.4,0,.2,1), opacity .25s, background .25s;
+}
+.dpStageDim:hover { flex-grow: 4; opacity: 1; }
+
+/* When a dim card is hovered, freeze DAIKON cards at their natural width
+   so the expansion only eats into the other dim cards (opens rightward) */
+.dpStages:has(.dpStageDim:hover) .dpStage:not(.dpStageDim) {
+  flex: 0 0 10%;
+}
+
+/* When a DAIKON card is hovered, freeze dim cards at their natural width
+   so the expansion only eats into other DAIKON cards (07 opens leftward) */
+.dpStages:has(.dpStage:not(.dpStageDim):hover) .dpStageDim {
+  flex: 0 0 10%;
+}
 
 /* Thick top color bar */
 .dpBar {
@@ -897,7 +961,7 @@
   opacity: 0.85;
   transition: opacity .2s, height .2s;
 }
-.dpDaikonGroup .dpStage:hover .dpBar,
+.dpStage:hover .dpBar,
 .dpStageActive .dpBar { opacity: 1; height: 6px; }
 
 /* Card header: large number + dot */
@@ -911,29 +975,29 @@
 
 .dpN {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: 3rem;
+  font-size: 2rem;
   font-weight: 900;
   color: rgba(255,255,255,.08);
   letter-spacing: -.04em;
   line-height: 1;
   transition: color .2s, opacity .2s;
 }
-.dpDaikonGroup .dpStage:hover .dpN,
+.dpStage:hover .dpN,
 .dpStageActive .dpN { color: var(--sc); opacity: 0.7; }
 
-/* Stage name */
+/* Stage name — hidden by default, revealed on hover */
 .dpLabel {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: .78rem;
   font-weight: 800;
   letter-spacing: .07em;
   text-transform: uppercase;
-  color: rgba(255,255,255,.88);
+  color: rgba(255,255,255,.55);
   line-height: 1.45;
-  margin-bottom: 14px;
   white-space: pre-line;
+  margin-bottom: 14px;
 }
-.dpDaikonGroup .dpStage:hover .dpLabel,
+.dpStage:hover .dpLabel,
 .dpStageActive .dpLabel { color: #fff; }
 
 /* Candidate count */
@@ -997,6 +1061,15 @@
   flex-direction: column;
   gap: 8px;
   flex: 1;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height .4s cubic-bezier(.4,0,.2,1), opacity .25s ease .08s;
+}
+.dpStage:hover .dpSteps,
+.dpStageActive .dpSteps {
+  max-height: 300px;
+  opacity: 1;
 }
 
 .dpStep {
@@ -1016,12 +1089,26 @@
   opacity: 0.6;
 }
 
-.dpDaikonGroup .dpStage:hover .dpStep,
+.dpStage:hover .dpStep,
 .dpStageActive .dpStep { color: rgba(255,255,255,.72); }
-.dpDaikonGroup .dpStage:hover .dpStep::before,
+.dpStage:hover .dpStep::before,
 .dpStageActive .dpStep::before { opacity: 1; }
 
-/* AI tag */
+/* AI tag — hidden by default, revealed on hover */
+.dpAiTag {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  margin-top: 0;
+  transition: max-height .4s cubic-bezier(.4,0,.2,1), opacity .2s ease, margin-top .3s;
+}
+.dpStage:hover .dpAiTag,
+.dpStageActive .dpAiTag {
+  max-height: 80px;
+  opacity: 1;
+  margin-top: 18px;
+}
+
 .dpAiTag {
   margin-top: 18px;
   font-family: 'JetBrains Mono', monospace;
